@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.peoit.android.studentuga.ui.GetMoneyActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_1dp"
+        android:layout_marginTop="@dimen/layout_24dp"
+        android:background="@color/md_grey_300"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:background="@color/white_"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:text="提现金额"
+            android:textColor="@color/black_2"
+            android:textSize="@dimen/text_16sp" />
+
+        <EditText
+            android:id="@+id/et_get_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:layout_weight="1"
+            android:background="@color/trans_w"
+            android:hint="请输入金额"
+            android:singleLine="true"
+            android:textColor="@color/black_1"
+            android:textColorHint="@color/black_3"
+            android:textSize="@dimen/text_16sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_1dp"
+        android:background="@color/md_grey_300"></View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_m8dp"
+        android:layout_marginRight="@dimen/layout_m8dp"
+        android:layout_marginTop="@dimen/layout_m16dp"
+        android:text="注:对现有的创业币进行提现, 提现是发出提现请求, 在每个星期的星期五, 统一进行线下提现。"
+        android:textColor="@color/black_3"
+        android:lineSpacingExtra="@dimen/layout_6dp"
+        android:textSize="@dimen/text_14sp" />
+
+    <TextView
+        android:id="@+id/tv_get_money"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_40dp"
+        android:layout_marginLeft="@dimen/layout_m8dp"
+        android:layout_marginRight="@dimen/layout_m8dp"
+        android:layout_marginTop="@dimen/layout_m16dp"
+        android:background="@drawable/sign_up_sel"
+        android:gravity="center"
+        android:text="提现"
+        android:textColor="@color/white_1"
+        android:textSize="@dimen/text_16sp" />
+
+</LinearLayout>

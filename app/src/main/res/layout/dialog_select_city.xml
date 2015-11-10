@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom">
+
+    <View
+        android:id="@+id/view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/black_3_1"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:orientation="horizontal"
+        android:gravity="center|right"
+        android:background="@color/col_main">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="取消"
+            android:gravity="center"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/white_1"
+            android:paddingLeft="@dimen/layout_m16dp"
+            android:paddingRight="@dimen/layout_m16dp" />
+
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="@dimen/layout_24dp"
+            android:background="@color/white_"></View>
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="确定"
+            android:gravity="center"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/white_1"
+            android:paddingLeft="@dimen/layout_m16dp"
+            android:paddingRight="@dimen/layout_m16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white_">
+
+        <com.peoit.android.studentuga.view.wheel.WheelView
+            android:id="@+id/wheel_pro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.peoit.android.studentuga.view.wheel.WheelView
+            android:id="@+id/wheel_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.peoit.android.studentuga.view.wheel.WheelView
+            android:id="@+id/wheel_county"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

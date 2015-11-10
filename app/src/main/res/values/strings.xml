@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">学.创.yeah</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_registor">RegistorActivity</string>
+    <string name="title_activity_my_order_option">MyOrderOptionActivity</string>
+    <string name="title_activity_my_order">MyOrderActivity</string>
+    <string name="title_activity_wealth">WealthActivity</string>
+    <string name="title_activity_pay_up">PayUpActivity</string>
+    <string name="title_activity_get_money">GetMoneyActivity</string>
+    <string name="title_activity_trade_log">TradeLogActivity</string>
+    <string name="title_activity_my_msg">MyMsgActivity</string>
+    <string name="title_activity_my_teacher">MyTeacherActivity</string>
+    <string name="title_activity_my_ranking">MyRankingActivity</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
+    <string name="title_activity_modify_user_info">ModifyUserInfoActivity</string>
+    <string name="title_activity_adress_manage">AdressManageActivity</string>
+    <string name="title_activity_add_address">AddAddressActivity</string>
+    <string name="title_activity_login_pass">LoginPassActivity</string>
+    <string name="title_activity_goods_sort">GoodsSortActivity</string>
+    <string name="title_activity_goods_det">GoodsDetActivity</string>
+    <string name="title_activity_pay_info">PayInfoActivity</string>
+    <string name="title_activity_pay">PayActivity</string>
+    <string name="title_activity_my_goods">MyGoodsActivity</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="title_activity_add_common">AddCommonActivity</string>
+    <string name="title_activity_user_goods_and_common">UserGoodsAndCommonActivity</string>
+    <string name="title_activity_goods_common">GoodsCommonActivity</string>
+    <string name="title_activity_user_liu_common">UserLiuCommonActivity</string>
+    <string name="title_activity_dai_xiao">DaiXiaoActivity</string>
+    <string name="title_activity_add_dai_xiao">AddDaiXiaoActivity</string>
+    <string name="title_activity_add_express">AddExpressActivity</string>
+    <string name="title_activity_express">ExpressActivity</string>
+</resources>

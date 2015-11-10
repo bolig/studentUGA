@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/md_amber_100"
+        custom:auto_cycle="true"
+        custom:indicator_visibility="visible"
+        custom:pager_animation="Accordion"
+        custom:pager_animation_span="1100" />
+
+    <com.daimajia.slider.library.Indicators.PagerIndicator
+        android:id="@+id/custom_indicator"
+        style="@style/AndroidImageSlider_Corner_Oval_Orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/slider"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
+
+    <com.peoit.android.studentuga.view.CustomLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/custom_indicator"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/uga_logo" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ll_ranking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:layout_marginBottom="@dimen/layout_m16dp"
+                android:focusable="false"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_noRanking"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_48dp"
+                android:gravity="center"
+                android:text="暂无排名信息"
+                android:textColor="@color/black_2"
+                android:textSize="16sp" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginBottom="@dimen/layout_m16dp"
+            android:background="@drawable/sign_up_sel"
+            android:gravity="center"
+            android:paddingLeft="@dimen/layout_36dp"
+            android:paddingRight="@dimen/layout_36dp"
+            android:text="立即报名"
+            android:textColor="@color/white_1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_m8dp"
+            android:background="@drawable/home_header_line"></View>
+
+    </com.peoit.android.studentuga.view.CustomLinearLayout>
+
+</RelativeLayout>

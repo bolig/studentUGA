@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_"
+    android:orientation="vertical"
+    tools:context="com.peoit.android.studentuga.ui.MyOrderOptionActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_m8dp"
+        android:background="@drawable/home_header_line"></View>
+
+    <LinearLayout
+        android:id="@+id/ll_myHoldOrder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:background="@drawable/draw_user_item_sel"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/layout_24dp"
+            android:layout_height="@dimen/layout_24dp"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:src="@drawable/myholdgoodsorder" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的拿货单"
+            android:textColor="@color/black_1"
+            android:textSize="@dimen/text_16sp" />
+
+        <ImageView
+            android:layout_width="@dimen/layout_24dp"
+            android:layout_height="@dimen/layout_24dp"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:src="@drawable/ic_arrow_r" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_1dp"
+        android:layout_marginLeft="56dp"
+        android:background="@color/black_3_1"></View>
+
+    <LinearLayout
+        android:id="@+id/ll_myScaleOrder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:background="@drawable/draw_user_item_sel"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/layout_24dp"
+            android:layout_height="@dimen/layout_24dp"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:src="@drawable/mysclegoodsorder" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的售货单"
+            android:textColor="@color/black_1"
+            android:textSize="@dimen/text_16sp" />
+
+        <ImageView
+            android:layout_width="@dimen/layout_24dp"
+            android:layout_height="@dimen/layout_24dp"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:src="@drawable/ic_arrow_r" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_m8dp"
+        android:background="@drawable/home_header_line"></View>
+
+</LinearLayout>

@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.peoit.android.studentuga.ui.UserGoodsAndCommonActivity">
+
+    <com.peoit.android.studentuga.view.list.SwipyRefreshLayout
+        android:id="@+id/pull_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:direction="bottom">
+
+        <com.peoit.android.studentuga.view.ObservableScrollView
+            android:id="@+id/sv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+            <com.peoit.android.studentuga.view.NoSrcollListView
+                android:id="@+id/lv_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/home_header_line"
+                android:dividerHeight="@dimen/layout_1dp"
+                android:listSelector="@color/white_"
+                android:overScrollMode="never"></com.peoit.android.studentuga.view.NoSrcollListView>
+
+
+        </com.peoit.android.studentuga.view.ObservableScrollView>
+
+    </com.peoit.android.studentuga.view.list.SwipyRefreshLayout>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/in_actionbar"></include>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_6dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@drawable/action_bottom_line_bg"></View>
+
+    <LinearLayout
+        android:id="@+id/ll_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/white_"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_tab_mian_item1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="商品列表"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/md_grey_300"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_main_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="用户留言"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_6dp"
+        android:layout_below="@+id/ll_tab"
+        android:background="@drawable/action_bottom_line_bg"
+        android:visibility="gone"></View>
+
+</RelativeLayout>

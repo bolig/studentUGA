@@ -1,0 +1,210 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_52dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_sreach"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_36dp"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:background="@drawable/sort_scan_sel"
+            android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
+            android:drawablePadding="@dimen/layout_4dp"
+            android:hint="搜索商品/用户/分类"
+            android:textColor="@color/black_2"
+            android:textColorHint="@color/white_2"
+            android:textSize="@dimen/text_14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/md_grey_300"
+        android:visibility="gone"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_tab_item1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="推荐"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="@dimen/layout_18dp"
+            android:layout_marginBottom="@dimen/layout_2dp"
+            android:background="@color/md_grey_500"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="销量"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="@dimen/layout_18dp"
+            android:layout_marginBottom="@dimen/layout_2dp"
+            android:background="@color/md_grey_500"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="价格"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="@dimen/layout_18dp"
+            android:layout_marginBottom="@dimen/layout_2dp"
+            android:background="@color/md_grey_500"
+            android:visibility="gone"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_item4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="信用"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_m8dp"
+        android:background="@drawable/home_header_line"></View>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <com.peoit.android.studentuga.view.list.SwipyRefreshLayout
+            android:id="@+id/pull_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:direction="both">
+
+            <com.peoit.android.studentuga.view.list.swipe.SwipeMenuListView
+                android:id="@+id/lvmenu_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/md_grey_300"
+                android:dividerHeight="@dimen/layout_1dp"
+                android:listSelector="@drawable/draw_user_item_sel"
+                android:scrollbars="none">
+
+            </com.peoit.android.studentuga.view.list.swipe.SwipeMenuListView>
+
+        </com.peoit.android.studentuga.view.list.SwipyRefreshLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

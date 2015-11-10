@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/peoit_lib/peoit_lib.iml" filepath="$PROJECT_DIR$/peoit_lib/peoit_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/select_pic/select_pic.iml" filepath="$PROJECT_DIR$/select_pic/select_pic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/studentUGA.iml" filepath="$PROJECT_DIR$/studentUGA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/volley_lib/volley_lib.iml" filepath="$PROJECT_DIR$/volley_lib/volley_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin_ui/weixin_ui.iml" filepath="$PROJECT_DIR$/weixin_ui/weixin_ui.iml" />
+    </modules>
+  </component>
+</project>

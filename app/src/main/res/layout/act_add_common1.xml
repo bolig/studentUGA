@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.peoit.android.studentuga.ui.AddCommonActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingBottom="@dimen/layout_24dp"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <include layout="@layout/act_add_common"></include>
+
+    </ScrollView>
+
+</LinearLayout>

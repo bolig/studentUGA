@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/md_grey_100">
+
+    <include layout="@layout/layout_toolbar_base"></include>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_52dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/et_sreach"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_36dp"
+                    android:layout_marginLeft="@dimen/layout_m16dp"
+                    android:layout_marginRight="@dimen/layout_m16dp"
+                    android:background="@drawable/sort_scan_sel"
+                    android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
+                    android:drawablePadding="@dimen/layout_4dp"
+                    android:hint="搜索商品/用户/分类"
+                    android:textColor="@color/black_2"
+                    android:textColorHint="@color/white_2"
+                    android:textSize="@dimen/text_14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/md_grey_300"
+                android:visibility="gone"></View>
+
+            <ListView
+                android:id="@+id/lv_goods_sort"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/md_grey_300"
+                android:dividerHeight="@dimen/layout_1dp"
+                android:overScrollMode="never"
+                android:scrollbars="none"></ListView>
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/fl_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

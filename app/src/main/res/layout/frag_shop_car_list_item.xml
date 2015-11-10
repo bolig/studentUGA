@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/white_">
+
+        <ImageView
+            android:id="@+id/iv_selectAllGoodsAtShop"
+            android:layout_width="@dimen/layout_48dp"
+            android:layout_height="@dimen/layout_48dp"
+            android:src="@drawable/draw_shop_select_sel"
+            android:padding="12dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_toShop"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_shopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="百货家居"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_14sp"
+                android:singleLine="true"
+                android:maxEms="10"
+                android:ellipsize="end"
+                android:layout_marginRight="@dimen/layout_m8dp" />
+
+            <ImageView
+                android:layout_width="@dimen/layout_24dp"
+                android:layout_height="@dimen/layout_24dp"
+                android:src="@drawable/ic_arrow_r" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></View>
+
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="20dp"
+            android:background="@color/md_grey_300"></View>
+
+
+        <TextView
+            android:id="@+id/tv_editGoodsAtShop"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="编辑"
+            android:textColor="@color/col_shop_car_edit"
+            android:textSize="@dimen/text_14sp"
+            android:gravity="center"
+            android:paddingLeft="@dimen/layout_m8dp"
+            android:paddingRight="@dimen/layout_m8dp" />
+
+    </LinearLayout>
+
+    <com.peoit.android.studentuga.view.NoSrcollListView
+        android:id="@+id/nlv_goodsAtShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="@dimen/layout_4dp"
+        android:divider="@color/white_"
+        android:scrollbars="none">
+
+    </com.peoit.android.studentuga.view.NoSrcollListView>
+
+</LinearLayout>

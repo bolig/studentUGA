@@ -1,0 +1,277 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.peoit.android.studentuga.ui.MyRankingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_sreach"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_36dp"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:background="@drawable/sort_scan_sel"
+            android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
+            android:drawablePadding="@dimen/layout_4dp"
+            android:hint="搜索用户/赛区/学校"
+            android:textColor="@color/black_2"
+            android:textColorHint="@color/white_2"
+            android:textSize="@dimen/text_14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_m8dp"
+        android:background="@drawable/home_header_line"
+        android:visibility="gone"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/layout_m8dp"
+        android:paddingRight="@dimen/layout_m8dp">
+
+        <LinearLayout
+            android:id="@+id/ll_ranking_item1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="我的排名:"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_12sp" />
+
+            <TextView
+                android:id="@+id/tv_myRankingAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/col_main"
+                android:textSize="@dimen/text_12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ranking_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="赛区排名:"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_12sp" />
+
+            <TextView
+                android:id="@+id/tv_myRankingAtArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/col_main"
+                android:textSize="@dimen/text_12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ranking_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="学校排名:"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_12sp" />
+
+            <TextView
+                android:id="@+id/tv_myRankingAtSchool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/col_main"
+                android:textSize="@dimen/text_12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_m8dp"
+        android:background="@drawable/home_header_line"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_tab_item1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_tab_item1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="总排名"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/md_grey_300"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_tab_item2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="赛区排名"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/md_grey_300"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_tab_item3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="学院排名"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_1dp"
+        android:background="@color/md_grey_200"></View>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.peoit.android.studentuga.view.list.SwipyRefreshLayout
+            android:id="@+id/pull_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:direction="bottom">
+
+            <ListView
+                android:id="@+id/lv_ranking"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/home_header_line"
+                android:dividerHeight="@dimen/layout_1dp"
+                android:listSelector="@color/white_"></ListView>
+
+        </com.peoit.android.studentuga.view.list.SwipyRefreshLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_load_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/layout_64dp"></FrameLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

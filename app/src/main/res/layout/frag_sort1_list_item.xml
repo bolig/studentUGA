@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/white_">
+
+        <com.peoit.android.studentuga.view.CircleImageView
+            android:id="@+id/tv_icon"
+            android:layout_width="@dimen/layout_40dp"
+            android:layout_height="@dimen/layout_40dp"
+            android:layout_marginLeft="@dimen/layout_m8dp"
+            android:src="@drawable/pay_up" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品1"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/black_1"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:singleLine="true"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/iv_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_56dp"
+            android:paddingTop="@dimen/layout_m16dp"
+            android:paddingBottom="@dimen/layout_m16dp"
+            android:paddingLeft="@dimen/layout_m8dp"
+            android:paddingRight="@dimen/layout_m8dp"
+            android:src="@drawable/draw_arrow_select_sel" />
+
+    </LinearLayout>
+
+    <com.peoit.android.studentuga.view.NoSrcollListView
+        android:id="@+id/lv_goods_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/md_grey_300"
+        android:dividerHeight="1dp"
+        android:scrollbars="none"
+        android:visibility="gone"></com.peoit.android.studentuga.view.NoSrcollListView>
+
+</LinearLayout>

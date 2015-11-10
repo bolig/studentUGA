@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/layout_72dp"
+            android:layout_height="@dimen/layout_72dp"
+            android:src="@drawable/test_shop"
+            android:layout_margin="@dimen/layout_m8dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/layout_m8dp"
+            android:layout_marginBottom="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_goodsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="百货家居"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_12sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_goodsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="阿莫in豆腐脑"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/layout_m8dp"
+            android:layout_marginBottom="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:gravity="right">
+
+            <TextView
+                android:id="@+id/tv_goodsPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="￥20000.00"
+                android:textColor="@color/md_red_300"
+                android:textSize="@dimen/text_12sp"/>
+
+            <TextView
+                android:id="@+id/tv_goodsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="X1"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_12sp"
+                android:layout_marginTop="@dimen/layout_m4dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

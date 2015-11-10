@@ -1,0 +1,398 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_grey_100"
+    tools:context="com.peoit.android.studentuga.ui.RegistorActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_scan_phoneNum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:layout_marginBottom="@dimen/layout_4dp"
+            android:layout_marginTop="@dimen/layout_24dp"
+            android:background="@color/white_"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:text="选择角色"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_16sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_scanPhoneNum_selectType"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginRight="@dimen/layout_m8dp">
+
+                <TextView
+                    android:id="@+id/tv_scanPhoneNum_userType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_m8dp"
+                    android:layout_marginRight="@dimen/layout_m8dp"
+                    android:layout_weight="1"
+                    android:text="大学生"
+                    android:textColor="@color/black_1" />
+
+                <ImageView
+                    android:id="@+id/iv_scanPhoneNum_selectUserType"
+                    android:layout_width="@dimen/layout_48dp"
+                    android:layout_height="@dimen/layout_48dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/draw_arrow_hov_sel" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_scanPhoneNum_student_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_m8dp"
+                    android:layout_marginRight="@dimen/layout_m8dp"
+                    android:text="选择角色"
+                    android:textColor="@color/black_2"
+                    android:textSize="@dimen/text_16sp"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/et_scanPhoneNum_studentNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_m8dp"
+                    android:layout_marginRight="@dimen/layout_m8dp"
+                    android:layout_weight="1"
+                    android:background="@color/trans_w"
+                    android:hint="请输入您的学号"
+                    android:singleLine="true"
+                    android:textColor="@color/black_1"
+                    android:textColorHint="@color/black_3"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_1dp"
+                android:layout_marginLeft="78dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@color/md_grey_300"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_m8dp"
+                    android:layout_marginRight="@dimen/layout_m8dp"
+                    android:text="选择角色"
+                    android:textColor="@color/black_2"
+                    android:textSize="@dimen/text_16sp"
+                    android:visibility="invisible" />
+
+                <LinearLayout
+                    android:id="@+id/ll_scanPhoneNum_selectSchool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="@dimen/layout_m8dp">
+
+                    <TextView
+                        android:id="@+id/tv_scanPhoneNum_schoolName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_m8dp"
+                        android:layout_marginRight="@dimen/layout_m8dp"
+                        android:layout_weight="1"
+                        android:hint="请填写学校名称"
+                        android:singleLine="true"
+                        android:textColor="@color/black_1"
+                        android:textSize="@dimen/text_16sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_scanPhoneNum_selectSchool"
+                        android:layout_width="@dimen/layout_48dp"
+                        android:layout_height="@dimen/layout_48dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/draw_arrow_hov_sel" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:layout_marginTop="@dimen/layout_4dp"
+            android:background="@color/white_"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_scanPhoneNum_phoneNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:layout_weight="1"
+                android:background="@color/trans_w"
+                android:hint="请输入你的手机号"
+                android:singleLine="true"
+                android:textColor="@color/black_1"
+                android:textColorHint="@color/black_3"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_scanPhoneNum_next"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_40dp"
+            android:layout_marginLeft="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:layout_marginTop="@dimen/layout_24dp"
+            android:background="@drawable/sign_up_sel"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="@color/white_1"
+            android:textSize="@dimen/text_16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:layout_marginTop="@dimen/layout_m16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注册即视为同意"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_14sp" />
+
+            <TextView
+                android:id="@+id/tv_scanPhoneNum_registor_deal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《xxx注册协议》"
+                android:textColor="@color/col_registor_deal"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_scan_authCode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_1dp"
+            android:background="@color/md_grey_300"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:layout_marginTop="@dimen/layout_24dp"
+            android:background="@color/white_"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_scanAuthCode_authCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_weight="1"
+                android:background="@color/trans_w"
+                android:hint="请输入您的验证码"
+                android:singleLine="true"
+                android:textColor="@color/black_1"
+                android:textColorHint="@color/black_3"
+                android:textSize="@dimen/text_16sp" />
+
+            <View
+                android:layout_width="@dimen/layout_1dp"
+                android:layout_height="@dimen/layout_24dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@color/md_grey_300"></View>
+
+            <TextView
+                android:id="@+id/tv_scanAuthCode_newAuthCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:text="重新获取"
+                android:textColor="@color/col_sort_group_text"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_1dp"
+            android:background="@color/md_grey_300"></View>
+
+        <TextView
+            android:id="@+id/tv_scanAuthCode_next"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_40dp"
+            android:layout_marginLeft="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:layout_marginTop="@dimen/layout_24dp"
+            android:background="@drawable/sign_up_sel"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="@color/white_1"
+            android:textSize="@dimen/text_16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_scan_password"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_1dp"
+            android:layout_marginTop="@dimen/layout_24dp"
+            android:background="@color/md_grey_300"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:background="@color/white_"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:text="登录密码"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_16sp" />
+
+            <EditText
+                android:id="@+id/et_scanPassword_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:layout_weight="1"
+                android:background="@color/trans_w"
+                android:hint="请输入密码"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:textColor="@color/black_1"
+                android:textColorHint="@color/black_3"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_1dp"
+            android:layout_marginLeft="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:background="@color/md_grey_300"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:background="@color/white_"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:text="确认密码"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_16sp" />
+
+            <EditText
+                android:id="@+id/et_scanPassword_rePass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:layout_weight="1"
+                android:background="@color/trans_w"
+                android:hint="请输入密码"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:textColor="@color/black_1"
+                android:textColorHint="@color/black_3"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_1dp"
+            android:background="@color/md_grey_300"></View>
+
+        <TextView
+            android:id="@+id/tv_scanPassword_registor"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_40dp"
+            android:layout_marginLeft="@dimen/layout_m8dp"
+            android:layout_marginRight="@dimen/layout_m8dp"
+            android:layout_marginTop="@dimen/layout_24dp"
+            android:background="@drawable/sign_up_sel"
+            android:gravity="center"
+            android:text="注册"
+            android:textColor="@color/white_1"
+            android:textSize="@dimen/text_16sp" />
+    </LinearLayout>
+
+</FrameLayout>

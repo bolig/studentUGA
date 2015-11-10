@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.peoit.android.studentuga">
+
+    <!-- 访问网络 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 写外部存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 访问wifi网络信息,wifi信息可用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取wifi的获取权限,wifi信息可用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 唤醒CPU -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 控制振动器 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 使用摄像头 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 直接拨打电话 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 直接发送短信 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- 读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 读取手机通讯录 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 写入手机通讯录 -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 闪光灯 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <!-- 读取低级别的系统日志文件 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- 开机启动 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 蓝牙账户 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 蓝牙 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- 调用系统下载功能 -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- 手机必要要有照相机 且能自动对焦 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application
+        android:name=".ui.base.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.WelActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.HomeActivity"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".ui.RegistorActivity"
+            android:label="@string/title_activity_registor" />
+        <activity
+            android:name=".ui.MyOrderOptionActivity"
+            android:label="@string/title_activity_my_order_option" />
+        <activity
+            android:name=".ui.MyOrderActivity"
+            android:label="@string/title_activity_my_order" />
+        <activity
+            android:name=".ui.MyScaleOrderActivity"
+            android:label="@string/title_activity_my_order" />
+        <activity
+            android:name=".ui.WealthActivity"
+            android:label="@string/title_activity_wealth" />
+        <activity
+            android:name=".ui.PayUpActivity"
+            android:label="@string/title_activity_pay_up">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wx4f6ec46e8e002bc6" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.GetMoneyActivity"
+            android:label="@string/title_activity_get_money" />
+        <activity
+            android:name=".ui.TradeLogActivity"
+            android:label="@string/title_activity_trade_log" />
+        <activity
+            android:name=".ui.MyMsgActivity"
+            android:label="@string/title_activity_my_msg" />
+        <activity
+            android:name=".ui.MyTeacherActivity"
+            android:label="@string/title_activity_my_teacher" />
+        <activity
+            android:name=".ui.MyRankingActivity"
+            android:label="@string/title_activity_my_ranking" />
+        <activity
+            android:name=".ui.UserInfoActivity"
+            android:label="@string/title_activity_user_info" />
+        <activity
+            android:name=".ui.ModifyUserInfoActivity"
+            android:label="@string/title_activity_modify_user_info" />
+        <activity
+            android:name=".ui.AdressManageActivity"
+            android:label="@string/title_activity_adress_manage" />
+        <activity
+            android:name=".ui.AddAddressActivity"
+            android:label="@string/title_activity_add_address" />
+        <activity
+            android:name=".ui.LoginPassActivity"
+            android:label="@string/title_activity_login_pass" />
+        <activity
+            android:name=".ui.PayPassActivity"
+            android:label="" />
+        <activity
+            android:name=".ui.GoodsSortActivity"
+            android:label="@string/title_activity_goods_sort" />
+        <activity
+            android:name=".ui.GoodsDetActivity"
+            android:label="@string/title_activity_goods_det" />
+        <activity
+            android:name=".ui.PayInfoActivity"
+            android:label="@string/title_activity_pay_info" />
+        <activity
+            android:name=".ui.PayActivity"
+            android:label="@string/title_activity_pay"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wx4f6ec46e8e002bc6" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".ui.MyGoodsActivity"
+            android:label="@string/title_activity_my_goods" />
+        <activity
+            android:name=".ui.SignInActivity"
+            android:label="@string/title_activity_sign_in" />
+        <activity
+            android:name=".ui.AddCommonActivity"
+            android:label="@string/title_activity_add_common"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".ui.UserGoodsAndCommonActivity"
+            android:label="@string/title_activity_user_goods_and_common" />
+        <activity
+            android:name=".ui.GoodsCommonActivity"
+            android:label="@string/title_activity_goods_common" />
+        <activity
+            android:name=".ui.UserLiuCommonActivity"
+            android:label="@string/title_activity_user_liu_common" />
+        <activity
+            android:name=".ui.DaiXiaoActivity"
+            android:label="@string/title_activity_dai_xiao" />
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity" />
+        <activity android:name="me.iwf.photopicker.PhotoPagerActivity" />
+        <activity
+            android:name=".ui.AddDaiXiaoActivity"
+            android:label="@string/title_activity_add_dai_xiao"></activity>
+        <activity
+            android:name=".ui.AddExpressActivity"
+            android:label="@string/title_activity_add_express"></activity>
+        <activity
+            android:name=".ui.ExpressActivity"
+            android:label="@string/title_activity_express"></activity>
+
+        <activity android:name=".wxapi.WXPayEntryActivity" />
+
+        <receiver android:name=".weixin.AppRegister">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+</manifest>

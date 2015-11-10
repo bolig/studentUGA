@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/md_grey_200">
+
+        <com.peoit.android.studentuga.view.CircleImageView
+            android:id="@+id/tv_icon"
+            android:layout_width="@dimen/layout_36dp"
+            android:layout_height="@dimen/layout_36dp"
+            android:layout_marginLeft="12dp"
+            android:src="@drawable/pay_up" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品1"
+            android:textSize="@dimen/text_14sp"
+            android:textColor="@color/black_1"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:singleLine="true"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="@dimen/layout_24dp"
+            android:layout_height="@dimen/layout_24dp"
+            android:layout_marginRight="@dimen/layout_8dp"
+            android:src="@drawable/ic_arrow_r" />
+
+    </LinearLayout>
+
+</LinearLayout>

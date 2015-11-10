@@ -1,0 +1,7 @@
+/build
+
+src/androidTest
+
+.apk
+
+app.iml

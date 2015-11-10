@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_toolbar_base"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_52dp"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/et_sreach"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_36dp"
+            android:background="@drawable/sort_scan_sel"
+            android:layout_marginLeft="@dimen/layout_m16dp"
+            android:layout_marginRight="@dimen/layout_m16dp"
+            android:textSize="@dimen/text_14sp"
+            android:hint="搜索商品/用户/分类"
+            android:textColor="@color/black_2"
+            android:textColorHint="@color/white_2"
+            android:drawableLeft="@drawable/abc_ic_search_api_mtrl_alpha"
+            android:drawablePadding="@dimen/layout_4dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/md_grey_300"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/lv_sort"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:divider="@color/md_grey_300"
+            android:dividerHeight="@dimen/layout_1dp"
+            android:scrollbars="none"></ListView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/md_grey_300"
+            android:paddingLeft="@dimen/layout_4dp"
+            android:paddingRight="@dimen/layout_4dp">
+
+            <ListView
+                android:id="@+id/lv_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/trans_w"
+                android:dividerHeight="0dp"
+                android:scrollbars="none"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/layout_m8dp"
+                android:paddingBottom="@dimen/layout_m8dp"></ListView>
+
+            <LinearLayout
+                android:id="@+id/ll_error"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="加载失败"
+                    android:textSize="@dimen/text_16sp"
+                    android:textColor="@color/black_2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/layout_4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正在加载..."
+                    android:textSize="@dimen/text_16sp"
+                    android:textColor="@color/black_2"
+                    android:layout_marginRight="@dimen/layout_4dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

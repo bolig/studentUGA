@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.peoit.android.studentuga.ui.HomeActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_bar">
+
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/ll_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_56dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/col_tab"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_page1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/layout_26dp"
+                android:layout_height="@dimen/layout_26dp"
+                android:src="@drawable/tab_home" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="首页"
+                android:textColor="@color/white_"
+                android:textSize="@dimen/text_12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_page2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/layout_26dp"
+                android:layout_height="@dimen/layout_26dp"
+                android:src="@drawable/tab_sort" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品分类"
+                android:textColor="@color/white_"
+                android:textSize="@dimen/text_12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_page3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/layout_26dp"
+                android:layout_height="@dimen/layout_26dp"
+                android:src="@drawable/tab_shop_car" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="购物车"
+                android:textColor="@color/white_"
+                android:textSize="@dimen/text_12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_page4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/layout_26dp"
+                android:layout_height="@dimen/layout_26dp"
+                android:src="@drawable/tab_user_center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="个人中心"
+                android:textColor="@color/white_"
+                android:textSize="@dimen/text_12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_6dp"
+        android:layout_above="@+id/ll_bar"
+        android:background="@drawable/draw_line_bg" />
+
+</RelativeLayout>

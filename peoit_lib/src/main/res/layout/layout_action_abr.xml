@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:layout_alignParentLeft="true"
+    android:background="@color/col_main">
+
+    <com.andexert.library.RippleView
+        android:id="@+id/ripple_l"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_alignParentLeft="true"
+        app:rv_centered="true"
+        app:rv_type="doubleRipple">
+
+        <ImageView
+            android:id="@+id/iv_l"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" />
+
+    </com.andexert.library.RippleView>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:maxEms="8"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/white_"
+        android:textSize="@dimen/text_16sp" />
+
+    <TextView
+        android:id="@+id/tv_r"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="4dp"
+        android:ellipsize="none"
+        android:gravity="center"
+        android:maxEms="4"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/col_action_r_text"
+        android:textSize="14dp" />
+
+    <com.andexert.library.RippleView
+        android:id="@+id/ripple_r"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_alignParentRight="true"
+        app:rv_centered="true"
+        app:rv_type="doubleRipple">
+
+        <ImageView
+            android:id="@+id/iv_r"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" />
+
+    </com.andexert.library.RippleView>
+</RelativeLayout>

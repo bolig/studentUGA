@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <com.peoit.android.studentuga.view.CircleImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/layout_56dp"
+        android:layout_height="@dimen/layout_56dp"
+        android:layout_marginLeft="@dimen/layout_m8dp"
+        android:layout_marginRight="@dimen/layout_m8dp"
+        android:src="@drawable/user_avater"
+        android:layout_marginTop="@dimen/layout_m8dp"
+        android:layout_marginBottom="@dimen/layout_m8dp" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/black_1"
+        android:text="111"
+        android:layout_marginLeft="@dimen/layout_m8dp"
+        android:layout_marginRight="@dimen/layout_m8dp"
+        android:singleLine="true" />
+
+
+    <ImageView
+        android:id="@+id/iv_next"
+        android:layout_width="@dimen/layout_24dp"
+        android:layout_height="@dimen/layout_24dp"
+        android:layout_marginLeft="@dimen/layout_m8dp"
+        android:layout_marginRight="@dimen/layout_m8dp"
+        android:src="@drawable/ic_arrow_r" />
+
+</LinearLayout>

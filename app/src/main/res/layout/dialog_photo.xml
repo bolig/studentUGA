@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_tv"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="@dimen/layout_m8dp"
+        android:layout_marginLeft="@dimen/layout_m8dp"
+        android:layout_marginTop="@dimen/layout_m16dp">
+
+        <TextView
+            android:id="@+id/tv_native"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:text="本地图片"
+            android:gravity="center"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/black_1"
+            android:background="@drawable/draw_video_native" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_1dp"
+            android:background="@color/md_grey_300"></View>
+
+        <TextView
+            android:id="@+id/tv_take"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:text="拍照"
+            android:gravity="center"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/black_1"
+            android:background="@drawable/draw_video_take" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_48dp"
+        android:text="取消"
+        android:gravity="center"
+        android:textSize="@dimen/text_16sp"
+        android:textColor="@color/black_1"
+        android:layout_marginRight="@dimen/layout_m8dp"
+        android:layout_marginLeft="@dimen/layout_m8dp"
+        android:layout_marginBottom="@dimen/layout_m8dp"
+        android:layout_marginTop="@dimen/layout_m16dp"
+        android:background="@drawable/draw_video_cancel" />
+
+</LinearLayout>

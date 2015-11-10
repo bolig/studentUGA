@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke
+        android:dashWidth="@dimen/layout_1dp"
+        android:color="@color/md_blue_grey_400"></stroke>
+    <gradient
+        android:startColor="@color/md_grey_700"
+        android:centerColor="@color/md_grey_300"
+        android:endColor="@color/md_grey_300"
+        android:angle="270"
+        android:centerY="0.1"></gradient>
+</shape>
