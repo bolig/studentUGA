@@ -44,7 +44,7 @@ public class MyGoodsMineAdapter extends BaseListAdapter<MyGoodsInfo> {
         mHolder.tvPrice.setText("￥" + data.getPrice());
         Glide.with(mAc)
                 .load(NetConstants.IMG_HOST + data.getImgurl())
-                .error(R.drawable.test_goods)
+                .error(R.drawable.noproduct)
                 .into(mHolder.ivIcon);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

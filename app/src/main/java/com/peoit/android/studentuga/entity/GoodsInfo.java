@@ -43,6 +43,15 @@ public class GoodsInfo implements Serializable {
     private int typeid;
     private int salescount;
     private String imgurl;
+    private long viewcount;
+
+    public long getViewcount() {
+        return viewcount;
+    }
+
+    public void setViewcount(long viewcount) {
+        this.viewcount = viewcount;
+    }
 
     public void setImgs(String imgs) {
         this.imgs = imgs;

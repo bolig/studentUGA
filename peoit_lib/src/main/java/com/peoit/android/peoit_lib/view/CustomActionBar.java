@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +27,9 @@ public class CustomActionBar extends RelativeLayout {
     private RippleView rippleR;
     private ImageView ivR;
     private View rootView;
+    private TextView tv_search;
+    private EditText et_search;
+    private RippleView rippleR2;
 
     private void assignViews() {
         rippleL = (RippleView) rootView.findViewById(R.id.ripple_l);
@@ -33,7 +37,10 @@ public class CustomActionBar extends RelativeLayout {
         tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
         tvR = (TextView) rootView.findViewById(R.id.tv_r);
         rippleR = (RippleView) rootView.findViewById(R.id.ripple_r);
+        rippleR2 = (RippleView) rootView.findViewById(R.id.ripple_r2);
         ivR = (ImageView) rootView.findViewById(R.id.iv_r);
+        tv_search = (TextView) rootView.findViewById(R.id.tv_search);
+        et_search = (EditText) rootView.findViewById(R.id.et_search);
     }
 
 
@@ -60,10 +67,14 @@ public class CustomActionBar extends RelativeLayout {
         assignViews();
         addView(rootView);
 
-        ivL.setVisibility(INVISIBLE);
-        ivR.setVisibility(INVISIBLE);
-        tvTitle.setVisibility(INVISIBLE);
+        rippleL.setVisibility(GONE);
+        rippleR.setVisibility(GONE);
+
+        tvTitle.setVisibility(GONE);
         tvR.setVisibility(GONE);
+
+        et_search.setVisibility(GONE);
+        tv_search.setVisibility(GONE);
 
         rootView.post(new Runnable() {
             @Override
@@ -88,7 +99,7 @@ public class CustomActionBar extends RelativeLayout {
                 }
             }
         });
-        ivL.setVisibility(VISIBLE);
+        rippleL.setVisibility(VISIBLE);
         return this;
     }
 
@@ -101,7 +112,7 @@ public class CustomActionBar extends RelativeLayout {
     public CustomActionBar setIvL(int resId, OnClickListener listener) {
         ivL.setImageResource(resId);
         ivL.setOnClickListener(listener);
-        ivL.setVisibility(VISIBLE);
+        rippleL.setVisibility(VISIBLE);
         return this;
     }
 
@@ -126,7 +137,7 @@ public class CustomActionBar extends RelativeLayout {
         tvR.setText(rTvText);
         tvR.setOnClickListener(listener);
         tvR.setVisibility(VISIBLE);
-        ivR.setVisibility(INVISIBLE);
+        rippleR.setVisibility(GONE);
         return this;
     }
 
@@ -140,7 +151,7 @@ public class CustomActionBar extends RelativeLayout {
     public CustomActionBar setIvR(int resId, OnClickListener listener) {
         ivR.setImageResource(resId);
         ivR.setOnClickListener(listener);
-        ivR.setVisibility(VISIBLE);
+        rippleR.setVisibility(VISIBLE);
         tvR.setVisibility(GONE);
         return this;
     }
@@ -155,6 +166,23 @@ public class CustomActionBar extends RelativeLayout {
         final float scale = getContext().getResources().getDisplayMetrics().density;
         //MyLogger.i(scale+"");
         return (int) (dpValue * scale + 0.5f);
+    }
+
+    public CustomActionBar showSearch(boolean isShow, OnClickListener listener) {
+        tv_search.setVisibility(isShow ? VISIBLE : GONE);
+        tv_search.setOnClickListener(listener);
+        return this;
+    }
+
+    public EditText showSearch() {
+        et_search.setVisibility(VISIBLE);
+        return et_search;
+    }
+
+    public CustomActionBar showR2(OnClickListener listener) {
+        rippleR2.setVisibility(VISIBLE);
+        rippleR2.setOnClickListener(listener);
+        return this;
     }
 
 }

@@ -38,7 +38,7 @@ public class PayInfoAdapter extends BaseListAdapter<ShopCarInfo> {
         mHolder.tvGoodsTitle.setText(data.getTitle());
         Glide.with(mAc)
                 .load(NetConstants.IMG_HOST + data.getImgurl())
-                .error(R.drawable.test_goods)
+                .error(R.drawable.noproduct)
                 .into(mHolder.ivGoodsIcon);
     }
 

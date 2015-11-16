@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +20,7 @@ import com.peoit.android.studentuga.R;
 import com.peoit.android.studentuga.config.CommonUtil;
 import com.peoit.android.studentuga.entity.RegistorSchoolInfo;
 import com.peoit.android.studentuga.net.BaseCallBack;
+import com.peoit.android.studentuga.net.BaseServer;
 import com.peoit.android.studentuga.net.server.RegistorServer;
 import com.peoit.android.studentuga.ui.adapter.RegistorSelectSchoolAdapter;
 
@@ -176,6 +179,8 @@ public class RegistorActivity extends BaseActivity implements View.OnClickListen
                 finish();
             }
         });
+
+        mThread.start();
     }
 
     @Override
@@ -203,7 +208,12 @@ public class RegistorActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v == tvScanAuthCodeNewAuthCode) {
-            mRegistorServer.requestSendCode(mUserPhone);
+            mRegistorServer.requestSendCode(mUserPhone, new BaseServer.OnSuccessCallBack() {
+                @Override
+                public void onSuccess(int mark) {
+                    mHandler.sendEmptyMessage(-1);
+                }
+            });
         } else if (v == tvScanAuthCodeNext) {
             if (checkAuthCode()) {
                 mRegistorServer.requestCheckCode(mUserPhone, mAuthCode);
@@ -219,10 +229,16 @@ public class RegistorActivity extends BaseActivity implements View.OnClickListen
                         mCurrentSelectSchoolInfo == null ? null : mCurrentSelectSchoolInfo.getId() + "");
             }
         } else if (v == tvScanPhoneNumRegistorDeal) {
-            showToast("查看注册协议");
+            ProtocolActivity.startThisActivity(this);
+            //showToast("查看注册协议");
         } else if (v == tvScanPhoneNumNext) {
             if (checkScanPhoneNum()) {
-                mRegistorServer.requestSendCode(mUserPhone);
+                mRegistorServer.requestSendCode(mUserPhone, new BaseServer.OnSuccessCallBack() {
+                    @Override
+                    public void onSuccess(int mark) {
+                        mHandler.sendEmptyMessage(-1);
+                    }
+                });
             }
         } else if (v == llScanPhoneNumSelectSchool) {
             llScanPhoneNumSelectSchool.setSelected(true);
@@ -395,6 +411,7 @@ public class RegistorActivity extends BaseActivity implements View.OnClickListen
                 break;
             case SCAN_PASSWORD:
                 llScanPassword.setVisibility(View.VISIBLE);
+                mHandler.sendEmptyMessage(-2);
                 break;
         }
         this.mLateProgress = type;
@@ -405,5 +422,69 @@ public class RegistorActivity extends BaseActivity implements View.OnClickListen
         SCAN_AUTH_CODE,
         SCAN_PASSWORD
     }
+
+    private int timer = 60;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            int what = msg.what;
+            switch (what) {
+                case 0:
+                    if (!tvScanAuthCodeNewAuthCode.isEnabled()) {
+                        tvScanAuthCodeNewAuthCode.setEnabled(true);
+                        tvScanAuthCodeNewAuthCode.setText("重新获取");
+                        isStart = false;
+                        timer = 60;
+                    }
+                    break;
+                case 1:
+                    tvScanAuthCodeNewAuthCode.setEnabled(false);
+                    tvScanAuthCodeNewAuthCode.setText(timer + "秒重新获取");
+                    break;
+                case -1:
+                    isStart = true;
+                    timer = 60;
+                    break;
+                case -2:
+                    isStart = false;
+                    timer = 60;
+                    break;
+            }
+        }
+    };
+
+    private boolean isStart = false;
+
+    private Thread mThread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            while (true) {
+                if (isStart) {
+                    if (timer-- <= 1) {
+                        mHandler.sendEmptyMessage(0);
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        mHandler.sendEmptyMessage(1);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    });
 }
 

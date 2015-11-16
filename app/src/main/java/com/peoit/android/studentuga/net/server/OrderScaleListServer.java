@@ -75,7 +75,7 @@ public class OrderScaleListServer extends BaseServer implements SwipyRefreshLayo
                     public void onResponseSuccessList(List<OrderInfo> result) {
                         if (result == null || result.size() == 0) {
                             uiShow.setTvErrorMsg("您当前还没有订单信息");
-                            uiShow.setIvErrorImg(R.drawable.test_goods);
+                            uiShow.setIvErrorImg(R.drawable.noproduct);
                             uiShow.setTvReloadListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -95,7 +95,7 @@ public class OrderScaleListServer extends BaseServer implements SwipyRefreshLayo
                     protected void onResponseFailure(int statusCode, String msg) {
                         mActBase.onResponseFailure(statusCode, msg);
                         uiShow.setTvErrorMsg("订单信息加载失败");
-                        uiShow.setIvErrorImg(R.drawable.test_goods);
+                        uiShow.setIvErrorImg(R.drawable.noproduct);
                         uiShow.setTvReloadListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

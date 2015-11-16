@@ -170,7 +170,7 @@ public class SelectGoodsStyleDialog extends Dialog implements View.OnClickListen
         tvGoodsCountAtEdit.setText(mGoodsCount + "");
 
         if (!TextUtils.isEmpty(mImageUrl))
-            Glide.with(mAc).load(mImageUrl).error(R.drawable.test_shop).into(ivGoodsImg);
+            Glide.with(mAc).load(mImageUrl).error(R.drawable.noproduct).into(ivGoodsImg);
 
         mGoodsStyleAdapter = new GoodsStyleAdapter(mAc);
         mGoodsStyleAdapter.upDateList(mGoodsStyleList);
@@ -274,7 +274,7 @@ public class SelectGoodsStyleDialog extends Dialog implements View.OnClickListen
     public void setImgUrl(String imgUrl) {
         this.mImageUrl = imgUrl;
         if (ivGoodsImg != null) {
-            Glide.with(mAc).load(imgUrl).error(R.drawable.test_shop).into(ivGoodsImg);
+            Glide.with(mAc).load(imgUrl).error(R.drawable.noproduct).into(ivGoodsImg);
         }
     }
 

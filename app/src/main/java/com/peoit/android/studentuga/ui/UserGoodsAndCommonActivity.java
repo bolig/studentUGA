@@ -18,6 +18,7 @@ import com.peoit.android.studentuga.config.CommonUtil;
 import com.peoit.android.studentuga.config.NetConstants;
 import com.peoit.android.studentuga.net.BaseServer;
 import com.peoit.android.studentuga.net.server.LiuCommonServer;
+import com.peoit.android.studentuga.net.server.LookAndSayServer;
 import com.peoit.android.studentuga.net.server.UserGoodsServer;
 import com.peoit.android.studentuga.ui.showUI.SimpleShowUiShow;
 import com.peoit.android.studentuga.uitl.MyLogger;
@@ -61,6 +62,9 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
     private String mPic;
     private ObservableScrollView sv;
     private int mLvHeight;
+    private LookAndSayServer mLookAndSayServer;
+    private LinearLayout llTabItem3;
+    private LinearLayout llTabMainItem3;
 
 
     private void assignViews() {
@@ -74,6 +78,7 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
         llTab = (LinearLayout) findViewById(R.id.ll_tab);
         llTabMianItem1 = (LinearLayout) findViewById(R.id.ll_tab_mian_item1);
         llTabMainItem2 = (LinearLayout) findViewById(R.id.ll_tab_main_item2);
+        llTabMainItem3 = (LinearLayout) findViewById(R.id.ll_tab_main_item3);
 
         // actionBar相关
 
@@ -118,6 +123,7 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
 
         mUserGoodsServer = new UserGoodsServer(this);
         mLiuCommonServer = new LiuCommonServer(this);
+        mLookAndSayServer = new LookAndSayServer(mAct);
     }
 
     @Override
@@ -147,9 +153,7 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
     private TextView tvName;
     private TextView tvSignName;
     private LinearLayout llTabItem1;
-    private TextView tvTabItem1;
     private LinearLayout llTabItem2;
-    private TextView tvTabItem2;
 
     private void addHeaderView() {
         View view = View.inflate(mAct, R.layout.act_user_goods_and_common_header, null);
@@ -161,9 +165,7 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
 
         llTabItem1 = (LinearLayout) view.findViewById(R.id.ll_tab_item1);
         llTabItem2 = (LinearLayout) view.findViewById(R.id.ll_tab_item2);
-
-        tvTabItem1 = (TextView) view.findViewById(R.id.tv_tab_item1);
-        tvTabItem2 = (TextView) view.findViewById(R.id.tv_tab_item2);
+        llTabItem3 = (LinearLayout) view.findViewById(R.id.ll_tab_item3);
 
         flRoot = (FrameLayout) view.findViewById(R.id.fl_root);
         mUIShow = new SimpleShowUiShow(this);
@@ -208,6 +210,9 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
                     case common:
                         mLiuCommonServer.requestLiuCommon(layout, direction);
                         break;
+                    case lookAndSay:
+                        mLookAndSayServer.requestLookAndSayList(layout, direction);
+                        break;
                 }
             }
         });
@@ -236,6 +241,21 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
                 changeUIShow(Type.common);
             }
         });
+
+        llTabItem3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeUIShow(Type.lookAndSay);
+            }
+        });
+
+        llTabMainItem3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeUIShow(Type.lookAndSay);
+            }
+        });
+
         ivL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,9 +282,11 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
 
         llTabItem1.setSelected(false);
         llTabItem2.setSelected(false);
+        llTabItem3.setSelected(false);
 
         llTabMianItem1.setSelected(false);
         llTabMainItem2.setSelected(false);
+        llTabMainItem3.setSelected(false);
 
         switch (type) {
             case goods:
@@ -309,11 +331,33 @@ public class UserGoodsAndCommonActivity extends BaseActivity {
                 llTabItem2.setSelected(true);
                 llTabMainItem2.setSelected(true);
                 break;
+            case lookAndSay:
+                if (mLookAndSayServer.adapter == null)
+                    lvInfo.setAdapter(mLookAndSayServer.getAdapter());
+                lvInfo.setAdapter(mLookAndSayServer.adapter);
+                if (mLookAndSayServer.adapter.getCount() == 0) {
+                    mLookAndSayServer.requestLookAndSayList(mUid + "", mUIShow, new BaseServer.OnSuccessCallBack() {
+                        @Override
+                        public void onSuccess(int mark) {
+                            flRoot.setVisibility(View.GONE);
+                        }
+                    });
+                } else {
+                    if (mLookAndSayServer.adapter.getCount() > 0) {
+                        flRoot.setVisibility(View.GONE);
+                    } else {
+                        flRoot.setVisibility(View.VISIBLE);
+                    }
+                }
+                llTabItem3.setSelected(true);
+                llTabMainItem3.setSelected(true);
+                break;
         }
     }
 
     private enum Type {
         goods,
-        common
+        common,
+        lookAndSay
     }
 }

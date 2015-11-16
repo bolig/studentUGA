@@ -31,7 +31,7 @@
             android:layout_marginBottom="@dimen/layout_m8dp"
             android:layout_marginRight="@dimen/layout_m8dp"
             android:layout_marginTop="@dimen/layout_m8dp"
-            android:src="@drawable/test_shop"
+            android:src="@drawable/noproduct"
             android:scaleType="centerCrop" />
 
         <RelativeLayout

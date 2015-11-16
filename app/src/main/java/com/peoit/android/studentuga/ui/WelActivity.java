@@ -7,6 +7,8 @@ import com.peoit.android.peoit_lib.base.BaseActivity;
 import com.peoit.android.studentuga.R;
 import com.peoit.android.studentuga.net.server.PayPassServer;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * 引导界面
  * <p/>
@@ -26,6 +28,7 @@ public class WelActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        JPushInterface.init(mAct);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -43,5 +46,17 @@ public class WelActivity extends BaseActivity {
     @Override
     public void initListener() {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(mAct);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(mAct);
     }
 }

@@ -33,6 +33,8 @@ public class ExpressInfo implements Serializable {
         return mark;
     }
 
+
+
     @Override
     public String toString() {
         return "ExpressInfo{" +

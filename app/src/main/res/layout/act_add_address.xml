@@ -86,6 +86,7 @@
             android:layout_weight="1"
             android:background="@color/trans_w"
             android:hint="请输入您的联系方式"
+            android:inputType="number"
             android:singleLine="true"
             android:textColor="@color/black_1"
             android:textColorHint="@color/black_3"
@@ -110,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_m8dp"
             android:layout_marginRight="@dimen/layout_m8dp"
-            android:text="邮政编码"
+            android:text="@string/postcode"
             android:textColor="@color/black_2"
             android:textSize="@dimen/text_16sp" />
 
@@ -128,6 +129,7 @@
             android:layout_weight="1"
             android:background="@color/trans_w"
             android:hint="请输入您所在地区的邮政编码"
+            android:inputType="number"
             android:singleLine="true"
             android:textColor="@color/black_1"
             android:textColorHint="@color/black_3"

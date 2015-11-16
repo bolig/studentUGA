@@ -14,7 +14,7 @@
             android:id="@+id/iv_icon"
             android:layout_width="@dimen/layout_72dp"
             android:layout_height="@dimen/layout_72dp"
-            android:src="@drawable/test_shop"
+            android:src="@drawable/noproduct"
             android:layout_margin="@dimen/layout_m8dp"/>
 
         <LinearLayout

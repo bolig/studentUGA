@@ -188,7 +188,7 @@ public class ShopCarContentAdapter1 extends BaseListAdapter<ShopCarInfo> {
             }
         });
         ((ActivityBase) mAc).showLoadingDialog("正在获取样式信息...");
-        new GoodsServer((HomeActivity) mAc).loadGoodsDet(data.getCommodityId() + "", null, null, new GoodsServer.OnGoodsDetCallBack() {
+        new GoodsServer((HomeActivity) mAc).loadGoodsDet(data.getCommodityId() + "", null, false, null, new GoodsServer.OnGoodsDetCallBack() {
 
             @Override
             public void onDetBack(GoodDetInfo info) {

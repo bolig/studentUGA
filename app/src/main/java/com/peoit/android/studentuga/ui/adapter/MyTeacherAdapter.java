@@ -11,7 +11,7 @@ import com.peoit.android.peoit_lib.adapter.BaseListAdapter;
 import com.peoit.android.peoit_lib.adapter.BaseViewHolder;
 import com.peoit.android.studentuga.R;
 import com.peoit.android.studentuga.config.NetConstants;
-import com.peoit.android.studentuga.entity.UserInfo;
+import com.peoit.android.studentuga.entity.BindUserInfo;
 import com.peoit.android.studentuga.view.CircleImageView;
 
 /**
@@ -20,7 +20,7 @@ import com.peoit.android.studentuga.view.CircleImageView;
  * E-mail:boli_android@163.com
  * last: ...
  */
-public class MyTeacherAdapter extends BaseListAdapter<UserInfo.UserVosEntity> {
+public class MyTeacherAdapter extends BaseListAdapter<BindUserInfo> {
 
     public MyTeacherAdapter(Activity mAc) {
         super(mAc);
@@ -36,10 +36,10 @@ public class MyTeacherAdapter extends BaseListAdapter<UserInfo.UserVosEntity> {
     }
 
     @Override
-    protected void initView(int position, UserInfo.UserVosEntity data, ViewHolderBase holderBase, View convertView) {
+    protected void initView(int position, BindUserInfo data, ViewHolderBase holderBase, View convertView) {
         ViewHolder mHolder = (ViewHolder) holderBase;
-        Glide.with(mAc).load(NetConstants.IMG_HOST + data.getPic()).placeholder(R.drawable.user_avater).error(R.drawable.user_avater).into(mHolder.ivIcon);
-        mHolder.tvTitle.setText(data.getName());
+        Glide.with(mAc).load(NetConstants.IMG_HOST + data.getPic()).error(R.drawable.user_avater).into(mHolder.ivIcon);
+        mHolder.tvTitle.setText(data.getNickname());
     }
 
     private class ViewHolder extends BaseViewHolder {

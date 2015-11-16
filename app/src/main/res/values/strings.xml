@@ -37,4 +37,10 @@
     <string name="title_activity_add_dai_xiao">AddDaiXiaoActivity</string>
     <string name="title_activity_add_express">AddExpressActivity</string>
     <string name="title_activity_express">ExpressActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_bind_teacher">BindTeacherActivity</string>
+    <string name="title_activity_my_look_and_say">MyLookAndSayActivity</string>
+    <string name="title_activity_push">PushActivity</string>
+    <string name="title_activity_xiao_xi">XiaoXiActivity</string>
+    <string name="postcode">邮政编码</string>
 </resources>

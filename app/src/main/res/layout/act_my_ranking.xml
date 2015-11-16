@@ -269,8 +269,7 @@
         <FrameLayout
             android:id="@+id/fl_load_root"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="@dimen/layout_64dp"></FrameLayout>
+            android:layout_height="match_parent"></FrameLayout>
 
     </FrameLayout>
 

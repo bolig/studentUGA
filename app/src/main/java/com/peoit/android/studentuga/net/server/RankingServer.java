@@ -64,7 +64,7 @@ public class RankingServer extends BaseServer implements SwipyRefreshLayout.OnRe
         this.areaid = areaid;
         params.put("areaid", areaid);
         params.put("pageNo", direction == SwipyRefreshLayoutDirection.BOTTOM ? mNo + "" : "1");
-        params.put("pagesize", "10");
+        params.put("pagesize", "20");
         if (isNull) {
             uiShow.setIvErrorImg(R.drawable.nomingxi);
             uiShow.setTvErrorMsg("暂无排名信息");

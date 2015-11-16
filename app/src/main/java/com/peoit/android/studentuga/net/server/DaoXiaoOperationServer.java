@@ -50,8 +50,8 @@ public class DaoXiaoOperationServer extends BaseServer {
 
             @Override
             protected void onResponseFailure(int statusCode, String msg) {
-//                mActBase.onResponseFailure(statusCode, msg);
-                mActBase.showToast("申请失败");
+                mActBase.onResponseFailure(statusCode, msg);
+//                mActBase.showToast("申请失败");
             }
         });
     }

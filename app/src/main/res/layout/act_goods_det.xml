@@ -185,7 +185,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center"
-                        android:background="@color/md_grey_100">
+                        android:background="@color/md_grey_100"
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="@dimen/layout_48dp"
@@ -225,9 +226,7 @@
                             android:singleLine="true"
                             android:text="正在加载评论..."
                             android:textColor="@color/black_2"
-                            android:textSize="@dimen/text_14sp"
-                            android:layout_marginTop="@dimen/layout_m4dp"
-                            android:layout_marginBottom="@dimen/layout_m16dp" />
+                            android:textSize="@dimen/text_14sp"/>
 
                     </LinearLayout>
 

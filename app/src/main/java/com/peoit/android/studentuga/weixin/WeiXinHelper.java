@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Xml;
+import android.widget.Toast;
 
 import com.peoit.android.studentuga.net.BaseServer;
 import com.peoit.android.studentuga.uitl.MyLogger;
@@ -39,10 +40,12 @@ public class WeiXinHelper {
     private final String mOrderTitle;
     private final IWXAPI msgApi;
     private final Activity mAc;
+    private final String mAount;
+    private final String mAttach;
     private Map<String, String> resultunifiedorder;
     private BaseServer.OnSuccessCallBack mOnSuccessCallBack;
 
-    public WeiXinHelper(Activity mAc, String orderNum, String orderTitle) {
+    public WeiXinHelper(Activity mAc, String orderNum, String orderTitle, String aount, String attach) {
         this.mAc = mAc;
         req = new PayReq() {
             @Override
@@ -64,6 +67,8 @@ public class WeiXinHelper {
 
         mOrderNum = orderNum;
         mOrderTitle = orderTitle;
+        mAount = aount;
+        mAttach = attach;
     }
 
     public void toWeiXin() {
@@ -87,7 +92,7 @@ public class WeiXinHelper {
         sb.append(Constants.API_KEY);
 
         String packageSign = MD5.getMessageDigest(sb.toString().getBytes()).toUpperCase();
-        Log.e("orion", packageSign);
+        Log.e("orion777777777777777", packageSign);
         return packageSign;
     }
 
@@ -119,7 +124,7 @@ public class WeiXinHelper {
         }
         sb.append("</xml>");
 
-        Log.e("orion", sb.toString());
+        Log.e("orion1", sb.toString());
         return sb.toString();
     }
 
@@ -129,7 +134,7 @@ public class WeiXinHelper {
 
         @Override
         protected void onPreExecute() {
-            dialog = ProgressDialog.show(mAc, "提示", "正在获取预支付订单...");
+
         }
 
         @Override
@@ -153,11 +158,11 @@ public class WeiXinHelper {
         protected Map<String, String> doInBackground(Void... params) {
             String url = String.format("https://api.mch.weixin.qq.com/pay/unifiedorder");
             String entity = genProductArgs();
-            Log.e("orion", entity);
+            Log.e("orion2", entity);
             try {
                 byte[] buf = Util.httpPost(url, entity);
                 String content = new String(buf);
-                Log.e("orion", content);
+                Log.e("orion3", content);
                 Map<String, String> xml = decodeXml(content);
                 return xml;
             } catch (Exception e) {
@@ -194,7 +199,7 @@ public class WeiXinHelper {
             }
             return xml;
         } catch (Exception e) {
-            Log.e("orion", e.toString());
+            Log.e("orion4", e.toString());
         }
         return null;
     }
@@ -226,14 +231,18 @@ public class WeiXinHelper {
             packageParams.add(new BasicNameValuePair("mch_id", Constants.MCH_ID));
             packageParams.add(new BasicNameValuePair("nonce_str", nonceStr));
             packageParams.add(new BasicNameValuePair("notify_url", "http://120.24.165.95:8081/cyshop/api/wxverify.do"));
-            packageParams.add(new BasicNameValuePair("out_trade_no", genNonceStr()));
+            MyLogger.e("trade_no = " + mOrderNum);
+            packageParams.add(new BasicNameValuePair("out_trade_no", mOrderNum));
+//            packageParams.add(new BasicNameValuePair("out_trade_no", genOutTradNo(mOrderNum)));
             packageParams.add(new BasicNameValuePair("spbill_create_ip", "127.0.0.1"));
-            packageParams.add(new BasicNameValuePair("total_fee", "1"));
+            packageParams.add(new BasicNameValuePair("total_fee", mAount));
             packageParams.add(new BasicNameValuePair("trade_type", "APP"));
             String sign = genPackageSign(packageParams);
             packageParams.add(new BasicNameValuePair("sign", sign));
+//            packageParams.add(new BasicNameValuePair("attach", mAttach));
             String xmlstring = toXml(packageParams);
-            return xmlstring;
+//            return xmlstring;
+            return new String(xmlstring.toString().getBytes(), "ISO8859-1");
         } catch (Exception e) {
             Log.e(TAG, "genProductArgs fail, ex = " + e.getMessage());
             return null;
@@ -245,6 +254,10 @@ public class WeiXinHelper {
 //        req.partnerId = Constants.MCH_ID;
         req.partnerId = Constants.MCH_ID;
         req.prepayId = resultunifiedorder.get("prepay_id");
+        if (TextUtils.isEmpty(req.partnerId)) {
+            Toast.makeText(mAc, "支付失败", Toast.LENGTH_SHORT).show();
+            return;
+        }
         MyLogger.e("  微信ID  " + req.prepayId);
         req.packageValue = "Sign=WXPay";
         req.nonceStr = genNonceStr();
@@ -264,9 +277,7 @@ public class WeiXinHelper {
 
         Log.e("orion = ", signParams.toString());
         Log.e("sign = ", sb.toString());
-    }
 
-    public void sendPayReq() {
         MyLogger.e("req = " + req);
 
         msgApi.sendReq(req);

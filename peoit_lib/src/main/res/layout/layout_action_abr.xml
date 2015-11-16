@@ -51,7 +51,7 @@
         android:singleLine="true"
         android:text=""
         android:textColor="@color/col_action_r_text"
-        android:textSize="14dp" />
+        android:textSize="16dp" />
 
     <com.andexert.library.RippleView
         android:id="@+id/ripple_r"
@@ -70,4 +70,61 @@
             android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" />
 
     </com.andexert.library.RippleView>
+
+    <com.andexert.library.RippleView
+        android:id="@+id/ripple_r2"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        app:rv_centered="true"
+        app:rv_type="doubleRipple">
+
+        <ImageView
+            android:id="@+id/iv_r2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/xiaoxi" />
+
+    </com.andexert.library.RippleView>
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/layout_8dp"
+        android:layout_toLeftOf="@+id/ripple_r2"
+        android:background="@drawable/search_bg"
+        android:drawableLeft="@drawable/ic_search1"
+        android:drawablePadding="@dimen/layout_8dp"
+        android:gravity="center_vertical"
+        android:hint="搜索用户/商品"
+        android:paddingLeft="8dp"
+        android:textColor="@color/white_2"
+        android:textColorHint="@color/white_2"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/layout_8dp"
+        android:layout_marginRight="@dimen/layout_8dp"
+        android:layout_toLeftOf="@+id/tv_r"
+        android:background="@drawable/search_bg"
+        android:drawableLeft="@drawable/ic_search1"
+        android:drawablePadding="@dimen/layout_8dp"
+        android:gravity="center_vertical"
+        android:hint=""
+        android:paddingLeft="8dp"
+        android:textColor="@color/white_2"
+        android:textColorHint="@color/white_2"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
 </RelativeLayout>

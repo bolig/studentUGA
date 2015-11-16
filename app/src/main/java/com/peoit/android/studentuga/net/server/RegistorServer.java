@@ -32,7 +32,7 @@ public class RegistorServer extends BaseServer {
         request(NetConstants.NET_QUERY_SCHOOL_INFO, RegistorSchoolInfo.class, null, callBack);
     }
 
-    public void requestSendCode(String phone) {
+    public void requestSendCode(String phone, final OnSuccessCallBack callBack) {
         RequestParams params = getRequestParams();
         params.put("phone", phone);
         params.put("type", Constants.PASSWROD_TYPE_REGISTOR);
@@ -47,6 +47,9 @@ public class RegistorServer extends BaseServer {
             @Override
             public void onResponseSuccess(Object result) {
                 mActBase.showToast("发送成功");
+                if (callBack != null){
+                    callBack.onSuccess(1);
+                }
                 ((RegistorActivity) mActBase.getActivity()).changeUiShow(RegistorActivity.REGISTOR_PROGRESS.SCAN_AUTH_CODE);
             }
 

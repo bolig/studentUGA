@@ -79,7 +79,7 @@ public class PayToOrderServer extends BaseServer {
 
             @Override
             public void onFinish() {
-                mActBase.hideLoadingDialog();
+
             }
 
             @Override

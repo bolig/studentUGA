@@ -162,10 +162,11 @@ public class GoodsServer extends BaseServer implements SwipyRefreshLayout.OnRefr
      *
      * @param id
      */
-    public void loadGoodsDet(String id, String uid, final SimpleShowUiShow mUIShow, final OnGoodsDetCallBack callBack) {
+    public void loadGoodsDet(String id, String uid, boolean isView, final SimpleShowUiShow mUIShow, final OnGoodsDetCallBack callBack) {
         RequestParams params = getRequestParams();
         params.put("id", id);
         params.put("uid", uid);
+        params.put("isview", isView ? "Y" : "N");
         if (mUIShow != null) {
             mUIShow.showLoading();
         }

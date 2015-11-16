@@ -3,5 +3,5 @@
     android:id="@+id/iv_img"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:src="@drawable/test_shop"
+    android:src="@drawable/noproduct"
     android:scaleType="centerCrop"></ImageView>

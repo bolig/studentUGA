@@ -50,6 +50,7 @@ public class BaseServer {
         MyLogger.e("requestParams = " + (params != null ? params.toString() : " null "));
         if (callBack != null) {
             getResponse(url);
+            MyLogger.e("url = " + mRequestUrl);
             callBack.setmClazz(clazz);
             callBack.setResponse_(mResponse_);
             switch (method) {

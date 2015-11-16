@@ -22,6 +22,7 @@ import com.peoit.android.studentuga.config.NetConstants;
 import com.peoit.android.studentuga.entity.ShopCarInfo;
 import com.peoit.android.studentuga.net.server.AddLiuCommonServer;
 import com.peoit.android.studentuga.net.server.CommonServer;
+import com.peoit.android.studentuga.net.server.LookAndSayOperationServer;
 import com.peoit.android.studentuga.ui.adapter.ImageAdapter;
 
 import java.util.ArrayList;
@@ -60,6 +61,7 @@ public class AddCommonActivity extends BaseActivity implements View.OnClickListe
     private TextView tvTitle1;
     private String mUid;
     private LinearLayout ll_img;
+    private addType currentAddType = addType.common;
 
     private void assignViews() {
         ivIcon = (ImageView) findViewById(R.id.iv_icon);
@@ -86,11 +88,16 @@ public class AddCommonActivity extends BaseActivity implements View.OnClickListe
         viewLine = findViewById(R.id.view_line);
     }
 
+    public static void startThisActivity(Activity mAc) {
+        Intent intent = new Intent(mAc, AddCommonActivity.class);
+        mAc.startActivityForResult(intent, 3);
+    }
+
     public static void startThisActivity(Activity mAc, String uid) {
         if (CommonUtil.isLoginAndToLogin(mAc, false)) {
             Intent intent = new Intent(mAc, AddCommonActivity.class);
             intent.putExtra("uid", uid);
-            mAc.startActivityForResult(intent, 1);
+            mAc.startActivityForResult(intent, 2);
         }
     }
 
@@ -119,32 +126,68 @@ public class AddCommonActivity extends BaseActivity implements View.OnClickListe
         mSellId = getIntent().getStringExtra("sid");
         mUid = getIntent().getStringExtra("uid");
         mGoods = (ShopCarInfo) getIntent().getSerializableExtra("goods");
+        if (TextUtils.isEmpty(mUid) && TextUtils.isEmpty(mOrderId) && TextUtils.isEmpty(mSellId)) {
+            currentAddType = addType.lookAndSay;
+        } else if (!TextUtils.isEmpty(mUid)) {
+            currentAddType = addType.liuCommon;
+        } else if (!TextUtils.isEmpty(mOrderId) && !TextUtils.isEmpty(mSellId)) {
+            currentAddType = addType.common;
+        }
         imgs.add("");
     }
 
-    public boolean isLiu() {
-        return TextUtils.isEmpty(mOrderId) && TextUtils.isEmpty(mSellId);
-    }
+//    public boolean isLiu() {
+//        return TextUtils.isEmpty(mOrderId) && TextUtils.isEmpty(mSellId);
+//    }
 
     @Override
     public void initView() {
         assignViews();
-        getToolbar().setBack().setTvTitle(isLiu() ? "添加留言" : "添加评论");
-        tvCommon.setText(isLiu() ? "发表留言" : "发表评论");
+        switch (currentAddType) {
+            case lookAndSay:
+                getToolbar().setBack().setTvTitle("添加动态").setTvR("发表", new OnClick());
+                tvCommon.setText("发表动态");
+                break;
+            case liuCommon:
+                getToolbar().setBack().setTvTitle("添加留言").setTvR("发表", new OnClick());
+                tvCommon.setText("发表留言");
+                break;
+            case common:
+                getToolbar().setBack().setTvTitle("添加评论").setTvR("发表", new OnClick());
+                tvCommon.setText("发表评论");
+                break;
+        }
         imgAdapter = new ImageAdapter(mAct, tvEdit);
         imgAdapter.upDateList(imgs);
         gvImgs.setAdapter(imgAdapter);
         tvEdit.setEnabled(false);
-        if (mGoods != null) {
-            llGoods.setVisibility(View.VISIBLE);
-            viewLine.setVisibility(View.VISIBLE);
-            llStar.setVisibility(View.VISIBLE);
-            changeUIshow(StarType.star5);
-            tvTitle1.setText(mGoods.getTitle());
-            tvPrice.setText("￥" + mGoods.getPrice());
-            Glide.with(mAct).load(NetConstants.IMG_HOST + mGoods.getImgurl()).error(R.drawable.noproduct).into(ivIcon);
-        } else {
-            ll_img.setVisibility(View.GONE);
+//        if (mGoods != null) {
+//            llGoods.setVisibility(View.VISIBLE);
+//            viewLine.setVisibility(View.VISIBLE);
+//            llStar.setVisibility(View.VISIBLE);
+//            changeUIshow(StarType.star5);
+//            tvTitle1.setText(mGoods.getTitle());
+//            tvPrice.setText("￥" + mGoods.getPrice());
+//            Glide.with(mAct).load(NetConstants.IMG_HOST + mGoods.getImgurl()).error(R.drawable.noproduct).into(ivIcon);
+//        } else {
+//            ll_img.setVisibility(View.GONE);
+//        }
+        switch (currentAddType) {
+            case lookAndSay:
+                ll_img.setVisibility(View.VISIBLE);
+                break;
+            case liuCommon:
+                ll_img.setVisibility(View.GONE);
+                break;
+            case common:
+                llGoods.setVisibility(View.VISIBLE);
+                viewLine.setVisibility(View.VISIBLE);
+                llStar.setVisibility(View.VISIBLE);
+                changeUIshow(StarType.star5);
+                tvTitle1.setText(mGoods.getTitle());
+                tvPrice.setText("￥" + mGoods.getPrice());
+                Glide.with(mAct).load(NetConstants.IMG_HOST + mGoods.getImgurl()).error(R.drawable.noproduct).into(ivIcon);
+                break;
         }
     }
 
@@ -232,31 +275,7 @@ public class AddCommonActivity extends BaseActivity implements View.OnClickListe
         } else if (v == ivStar5) {
             changeUIshow(StarType.star5);
         } else if (v == tvCommon) {
-            if (isLiu()) {
-                if (match()) {
-                    new AddLiuCommonServer(this).requestAddLiuCommon(mUid,
-                            mLiuCommon,
-                            imgs.size() >= 1 ? imgs.get(0) : "",
-                            imgs.size() >= 2 ? imgs.get(1) : "",
-                            imgs.size() >= 3 ? imgs.get(2) : "",
-                            imgs.size() >= 4 ? imgs.get(3) : "",
-                            imgs.size() >= 5 ? imgs.get(4) : "",
-                            imgs.size() >= 6 ? imgs.get(5) : "");
-                }
-            } else {
-                if (matchCommon()) {
-                    new CommonServer(this).requestAddCommon(mOrderId,
-                            mSellId,
-                            mLiuCommon,
-                            mStar + "",
-                            imgs.size() >= 1 ? imgs.get(0) : "",
-                            imgs.size() >= 2 ? imgs.get(1) : "",
-                            imgs.size() >= 3 ? imgs.get(2) : "",
-                            imgs.size() >= 4 ? imgs.get(3) : "",
-                            imgs.size() >= 5 ? imgs.get(4) : "",
-                            imgs.size() >= 6 ? imgs.get(5) : "");
-                }
-            }
+
         } else if (v == tvEdit) {
             String tv = tvEdit.getText().toString();
             boolean isEdit = "编辑".equals(tv);
@@ -334,6 +353,60 @@ public class AddCommonActivity extends BaseActivity implements View.OnClickListe
 
         StarType(int type) {
             this.mStarType = type;
+        }
+    }
+
+    public enum addType {
+        liuCommon,
+        common,
+        lookAndSay
+    }
+
+    private class OnClick implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (currentAddType) {
+                case lookAndSay:
+                    if (match()) {
+                        new LookAndSayOperationServer(mAct)
+                                .requestAddlookAndSay(mLiuCommon,
+                                        imgs.size() >= 1 ? imgs.get(0) : "",
+                                        imgs.size() >= 2 ? imgs.get(1) : "",
+                                        imgs.size() >= 3 ? imgs.get(2) : "",
+                                        imgs.size() >= 4 ? imgs.get(3) : "",
+                                        imgs.size() >= 5 ? imgs.get(4) : "",
+                                        imgs.size() >= 6 ? imgs.get(5) : "");
+                    }
+                    break;
+                case liuCommon:
+                    if (match()) {
+                        new AddLiuCommonServer(mAct)
+                                .requestAddLiuCommon(mUid,
+                                        mLiuCommon,
+                                        imgs.size() >= 1 ? imgs.get(0) : "",
+                                        imgs.size() >= 2 ? imgs.get(1) : "",
+                                        imgs.size() >= 3 ? imgs.get(2) : "",
+                                        imgs.size() >= 4 ? imgs.get(3) : "",
+                                        imgs.size() >= 5 ? imgs.get(4) : "",
+                                        imgs.size() >= 6 ? imgs.get(5) : "");
+                    }
+                    break;
+                case common:
+                    if (matchCommon()) {
+                        new CommonServer(mAct)
+                                .requestAddCommon(mOrderId,
+                                        mSellId,
+                                        mLiuCommon,
+                                        mStar + "",
+                                        imgs.size() >= 1 ? imgs.get(0) : "",
+                                        imgs.size() >= 2 ? imgs.get(1) : "",
+                                        imgs.size() >= 3 ? imgs.get(2) : "",
+                                        imgs.size() >= 4 ? imgs.get(3) : "",
+                                        imgs.size() >= 5 ? imgs.get(4) : "",
+                                        imgs.size() >= 6 ? imgs.get(5) : "");
+                    }
+                    break;
+            }
         }
     }
 }

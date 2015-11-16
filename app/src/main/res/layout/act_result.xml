@@ -1,12 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="zhifu"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/action"
+        android:background="@color/white_">
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/white_"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="@dimen/layout_80dp"
+                android:layout_height="@dimen/layout_80dp"
+                android:layout_margin="@dimen/layout_m8dp"
+                android:src="@drawable/noproduct" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_80dp"
+                android:layout_marginBottom="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:layout_marginTop="@dimen/layout_m8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text=""
+                    android:textColor="@color/black_2"
+                    android:textSize="@dimen/text_14sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_4dp"
+                    android:layout_marginTop="@dimen/layout_4dp"
+                    android:text="¥500.00"
+                    android:textColor="@color/md_red_500"
+                    android:textSize="@dimen/text_14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_8dp"
+            android:background="@drawable/home_header_line"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:text="支付详情"
+                android:textColor="@color/black_2"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_1dp"
+            android:background="@color/md_grey_300"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:background="@drawable/draw_user_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:text="支付金额:"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_16sp" />
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="￥100.00"
+                android:textColor="@color/md_red_500"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:background="@drawable/draw_user_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:text="支付状态:"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="支付成功"
+                android:textColor="@color/md_green_500"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:background="@drawable/draw_user_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:text="支付方式:"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="微信支付"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_48dp"
+            android:background="@drawable/draw_user_item_sel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:text="支付详情:"
+                android:textColor="@color/black_2"
+                android:textSize="@dimen/text_16sp" />
+
+            <TextView
+                android:id="@+id/tv_det"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_8dp"
+                android:layout_marginRight="@dimen/layout_8dp"
+                android:layout_weight="1"
+                android:text="1111"
+                android:textColor="@color/black_1"
+                android:textSize="@dimen/text_16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/action"
+        layout="@layout/layout_toolbar_base"></include>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_below="@+id/action"
+        android:background="@drawable/action_bottom_line_bg"></View>
+
+</RelativeLayout>

@@ -7,6 +7,8 @@ import com.peoit.android.studentuga.uitl.ShareUserHelper;
 
 import java.util.ArrayList;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * author:libo
  * time:2015/9/7
@@ -26,6 +28,8 @@ public class MyApplication extends Application {
         super.onCreate();
         mInstance = this;
         CommonUtil.initContext(this);
+        JPushInterface.init(mInstance);
+        JPushInterface.setDebugMode(false);
     }
 
     public void logout() {

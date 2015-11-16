@@ -34,7 +34,7 @@ public class PayUpServer extends BaseServer {
 
             @Override
             public void onFinish() {
-                mActBase.hideLoadingDialog();
+
             }
 
             @Override

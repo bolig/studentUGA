@@ -28,6 +28,7 @@ import com.peoit.android.studentuga.ui.GoodsCommonActivity;
 import com.peoit.android.studentuga.ui.HomeActivity;
 import com.peoit.android.studentuga.ui.LoginActivity;
 import com.peoit.android.studentuga.ui.MyGoodsActivity;
+import com.peoit.android.studentuga.ui.MyLookAndSayActivity;
 import com.peoit.android.studentuga.ui.MyMsgActivity;
 import com.peoit.android.studentuga.ui.MyOrderOptionActivity;
 import com.peoit.android.studentuga.ui.MyRankingActivity;
@@ -284,7 +285,7 @@ public class HomeUserFragment2 extends BasePagerFragment implements View.OnClick
         } else if (v == llDaiXiao) {
             DaiXiaoActivity.startThisActivity(getActivity());
         } else if (v == llMyAction) {
-
+            MyLookAndSayActivity.startThisActivity(getActivity());
         }
     }
 
@@ -342,7 +343,7 @@ public class HomeUserFragment2 extends BasePagerFragment implements View.OnClick
         }
 
         llWealth.setVisibility(View.VISIBLE);
-        llMyAction.setVisibility(View.GONE);
+        llMyAction.setVisibility(View.VISIBLE);
         llMyTeacherOrStudent.setVisibility(View.VISIBLE);
         llDaiXiao.setVisibility(View.VISIBLE);
         llMyEval.setVisibility(View.VISIBLE);
@@ -350,32 +351,36 @@ public class HomeUserFragment2 extends BasePagerFragment implements View.OnClick
         llMyMsg.setVisibility(View.VISIBLE);
         llMyOrder.setVisibility(View.VISIBLE);
 
-        switch (CommonUtil.getUserType()) {
-            case xueSheng:
+        if (CommonUtil.getUserType() != UserType.error) {
+            switch (CommonUtil.getUserType()) {
+                case xueSheng:
 
-                break;
-            case xueShengHui:
-                llMyGoods.setVisibility(View.GONE);
-                llMyRanking.setVisibility(View.GONE);
-                llMyTeacherOrStudent.setVisibility(View.GONE);
-                llDaiXiao.setVisibility(View.GONE);
-                break;
-            case daoShi:
-                llMyGoods.setVisibility(View.GONE);
-                llMyRanking.setVisibility(View.GONE);
-                llDaiXiao.setVisibility(View.GONE);
-                break;
-            case youKe:
-                llMyGoods.setVisibility(View.GONE);
-                llMyRanking.setVisibility(View.GONE);
-                llMyTeacherOrStudent.setVisibility(View.GONE);
-                llDaiXiao.setVisibility(View.GONE);
-                break;
-            case shangJia:
-                llMyRanking.setVisibility(View.GONE);
-                llMyTeacherOrStudent.setVisibility(View.GONE);
-                llDaiXiao.setVisibility(View.GONE);
-                break;
+                    break;
+                case xueShengHui:
+                    llMyGoods.setVisibility(View.GONE);
+                    llMyRanking.setVisibility(View.GONE);
+                    llMyTeacherOrStudent.setVisibility(View.GONE);
+                    llDaiXiao.setVisibility(View.GONE);
+                    llMyAction.setVisibility(View.GONE);
+                    break;
+                case daoShi:
+                    llMyGoods.setVisibility(View.GONE);
+                    llMyRanking.setVisibility(View.GONE);
+                    llDaiXiao.setVisibility(View.GONE);
+                    break;
+                case youKe:
+                    llMyGoods.setVisibility(View.GONE);
+                    llMyRanking.setVisibility(View.GONE);
+                    llMyTeacherOrStudent.setVisibility(View.GONE);
+                    llDaiXiao.setVisibility(View.GONE);
+                    llMyAction.setVisibility(View.GONE);
+                    break;
+                case shangJia:
+                    llMyRanking.setVisibility(View.GONE);
+                    llMyTeacherOrStudent.setVisibility(View.GONE);
+                    llDaiXiao.setVisibility(View.GONE);
+                    break;
+            }
         }
     }
 }

@@ -47,8 +47,9 @@ public class GoodsListAdapter extends BaseListAdapter<GoodsInfo> {
         ViewHolder mHolder = (ViewHolder) holderBase;
         mHolder.tvTitle.setText(data.getTitle());
         mHolder.tvPrice.setText("¥" + data.getPrice());
-        mHolder.tvPeople.setText(data.getSellcount() + "人已付款");
+//        mHolder.tvPeople.setText(data.getSellcount() + "人已付款");
         mHolder.tvInfo.setText(data.getDetails());
+        mHolder.tvPeople.setText("浏览量" + data.getViewcount());
         Glide.with(mAc).load(NetConstants.IMG_HOST + data.getImgurl()).error(R.drawable.noproduct).into(mHolder.ivIcon);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

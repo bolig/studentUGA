@@ -16,10 +16,12 @@ import com.peoit.android.studentuga.alipays.AliPayBase;
 import com.peoit.android.studentuga.alipays.AliPayServer;
 import com.peoit.android.studentuga.config.CommonUtil;
 import com.peoit.android.studentuga.entity.UserInfo;
+import com.peoit.android.studentuga.net.BaseServer;
 import com.peoit.android.studentuga.net.server.PayToOrderServer;
 import com.peoit.android.studentuga.net.server.PayUpServer;
 import com.peoit.android.studentuga.net.server.UserServer;
 import com.peoit.android.studentuga.ui.dialog.PayDialog;
+import com.peoit.android.studentuga.weixin.WeiXinHelper;
 
 public class PayActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout llPayUpCyb;
@@ -48,7 +50,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
     }
 
     public static void startThisActivity(Activity mAc, String ids, String money, String title) {
-        if (CommonUtil.isLoginAndToLogin(mAc, false)){
+        if (CommonUtil.isLoginAndToLogin(mAc, false)) {
             Intent intent = new Intent(mAc, PayActivity.class);
             intent.putExtra("ids", ids);
             intent.putExtra("money", money);
@@ -168,7 +170,32 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
      * 使用微信支付
      */
     private void payByWeiXin() {
-
+        new PayToOrderServer(mAct).requestPayByZhiFuBaoOrWeiXin(lastPayType.mType, mOrderIds, new PayUpServer.OnPayUpCallBack() {
+            @Override
+            public void onCallBack(int mark, String orderNum) {
+                switch (mark) {
+                    case -1:
+                        showToast("支付失败");
+                        break;
+                    case 0:
+                        int aount = (int) (Double.valueOf(mMoney) * 100d);
+                        final WeiXinHelper helper = new WeiXinHelper(mAct, orderNum, "购买" + mOrderTitle, aount + "", "");
+                        helper.setOnSuccessCallBack(new BaseServer.OnSuccessCallBack() {
+                            @Override
+                            public void onSuccess(int mark) {
+                                hideLoadingDialog();
+                                switch (mark) {
+                                    case 1:
+                                        helper.genPayReq();
+                                        break;
+                                }
+                            }
+                        });
+                        helper.toWeiXin();
+                        break;
+                }
+            }
+        });
     }
 
     /**
@@ -178,6 +205,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
         new PayToOrderServer(mAct).requestPayByZhiFuBaoOrWeiXin(lastPayType.mType, mOrderIds, new PayUpServer.OnPayUpCallBack() {
             @Override
             public void onCallBack(int mark, String orderNum) {
+                hideLoadingDialog();
                 switch (mark) {
                     case -1:
                         showToast("支付失败");
@@ -262,7 +290,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             new UserServer(this).requestUserInfoById(new UserServer.OnUserInfoCallBack() {
                 @Override
                 public void onCallBcak(UserInfo info) {

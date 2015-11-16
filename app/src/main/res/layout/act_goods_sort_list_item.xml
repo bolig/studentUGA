@@ -10,7 +10,7 @@
         android:layout_width="@dimen/layout_80dp"
         android:layout_height="@dimen/layout_80dp"
         android:layout_margin="@dimen/layout_m8dp"
-        android:src="@drawable/test_goods"
+        android:src="@drawable/noproduct"
         android:scaleType="centerCrop"/>
 
     <LinearLayout
@@ -60,7 +60,7 @@
                 android:id="@+id/tv_people"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23人付款"
+                android:text=""
                 android:textSize="@dimen/text_14sp"
                 android:textColor="@color/black_3"
                 android:layout_marginTop="@dimen/layout_4dp"
@@ -69,7 +69,7 @@
                 android:layout_marginBottom="@dimen/layout_4dp"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:visibility="gone"/>
+                android:gravity="right"/>
 
         </LinearLayout>
 

@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.peoit.android.studentuga.ui.XiaoXiActivity">
+
+    <com.peoit.android.studentuga.view.list.SwipyRefreshLayout
+        android:id="@+id/pull_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:direction="bottom">
+
+        <ListView
+            android:id="@+id/lv_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/md_grey_300"
+            android:dividerHeight="1.5dp"
+            android:listSelector="@color/white_"
+            android:scrollbars="none"></ListView>
+
+    </com.peoit.android.studentuga.view.list.SwipyRefreshLayout>
+
+</RelativeLayout>

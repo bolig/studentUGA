@@ -15,11 +15,11 @@ public class TradeLogInfo {
      * userid : 16
      * type : 1
      */
-    private int id;
+    private long id;
     private double price;
     private long stime;
     private String paytype;
-    private int userid;
+    private long userid;
     private int type;
 
     public void setId(int id) {
@@ -46,7 +46,7 @@ public class TradeLogInfo {
         this.type = type;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -62,12 +62,28 @@ public class TradeLogInfo {
         return paytype;
     }
 
-    public int getUserid() {
+    public long getUserid() {
         return userid;
     }
 
     public int getType() {
         return type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TradeLogInfo)) return false;
+
+        TradeLogInfo that = (TradeLogInfo) o;
+
+        return id == that.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 
     @Override

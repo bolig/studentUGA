@@ -45,6 +45,15 @@ public class GoodDetInfo implements Serializable {
     private String imgurl;
     private String isdx = "N";
     private double guideprice;
+    private long viewcount;
+
+    public long getViewcount() {
+        return viewcount;
+    }
+
+    public void setViewcount(long viewcount) {
+        this.viewcount = viewcount;
+    }
 
     public boolean isDx() {
         return "Y".equals(isdx);

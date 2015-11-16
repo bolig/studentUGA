@@ -19,9 +19,11 @@ public class NetConstants {
     public final static String RESPONSE_LIST_MODEL = "RESPONSE_LIST_MODEL"; // --------- 若为此数据操作类型, 返回数据将被解析为实体集合
     public final static String RESPONSE_LIST_MODEL_PAGE = "RESPONSE_LIST_MODEL_PAGE"; // 若为此数据操作类型, 返回数据将被解析为实体集合, 并带分页...
 
-    public final static String HOST = "http://120.24.165.95:8081/cyshop/api/"; // ------ 域名
+//    public final static String HOST = "http://120.24.165.95:8081/cyshop/api/"; // ------ 域名
+    public final static String HOST = "http://123.57.240.52:8080/cyshop/api/"; // ------ 域名
 
-    public final static String IMG_HOST = "http://120.24.165.95:8081"; // ------ 域名
+//    public final static String IMG_HOST = "http://120.24.165.95:8081"; // ------ 域名
+    public final static String IMG_HOST = "http://123.57.240.52:8080/"; // ------ 域名
 
     public final static String $_ADD_$ = "_ADD_"; // --------------------------------- 请求连接符
 

@@ -44,11 +44,13 @@ public class SignInServer extends BaseServer {
     }
 
     public void requestSignIn(String major,
-                              String name, String telphone) {
+                              String name, String telphone, String shen) {
         RequestParams params = getSignRequestParams();
         params.put("major", major);
         params.put("name", name);
         params.put("telphone", telphone);
+        params.put("idnumber", shen);
+
         request(url_signin, null, params, new BaseCallBack() {
             @Override
             public void onStart() {

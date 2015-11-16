@@ -37,7 +37,9 @@ import com.peoit.android.studentuga.net.server.HomeChooseGoodsServer;
 import com.peoit.android.studentuga.net.server.HomeRankingServer;
 import com.peoit.android.studentuga.net.server.SignInServer;
 import com.peoit.android.studentuga.ui.GoodsDetActivity;
+import com.peoit.android.studentuga.ui.SearchActivity;
 import com.peoit.android.studentuga.ui.SignInActivity;
+import com.peoit.android.studentuga.ui.XiaoXiActivity;
 import com.peoit.android.studentuga.ui.showUI.SimpleShowUiShow;
 import com.peoit.android.studentuga.view.MySliderTextView;
 import com.peoit.android.studentuga.view.list.SwipyRefreshLayout;
@@ -105,7 +107,17 @@ public class HomeFragment extends BasePagerFragment implements BaseSliderView.On
             action_title.setVisibility(View.GONE);
         }
         addHeader();
-        actionBar.setTvTitle("首页");
+        actionBar.showSearch(true, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchActivity.startThisActivity(getActivity());
+            }
+        }).showR2(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                XiaoXiActivity.startThisActivity(getActivity());
+            }
+        });
     }
 
     private LinearLayout llRanking;
@@ -265,53 +277,65 @@ public class HomeFragment extends BasePagerFragment implements BaseSliderView.On
     public void onResume() {
         super.onResume();
         if (!CommonUtil.isLogin()) {
-            tvSignUp.setVisibility(View.GONE);
-        }
-        if (CommonUtil.getUserType() == UserType.xueSheng) {
-            mSignInServer.requestCheckIsSignIn(new BaseServer.OnSuccessCallBack() {
+            tvSignUp.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onSuccess(int mark) {
-                    switch (mark) {
-                        case 0:
-                            tvSignUp.setVisibility(View.VISIBLE);
-                            tvSignUp.setText("你已报名");
-                            tvSignUp.setEnabled(false);
-                            tvSignUp.setOnClickListener(null);
-                            break;
-                        case -1:
-                            tvSignUp.setVisibility(View.VISIBLE);
-                            tvSignUp.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    SignInActivity.startThisActivity(HomeFragment.this);
-                                }
-                            });
-                            break;
-                        case -2:
-                            tvSignUp.setVisibility(View.VISIBLE);
-                            tvSignUp.setSelected(true);
-                            tvSignUp.setText("已报名, 等待审核...");
-                            tvSignUp.setOnClickListener(null);
-                            break;
-                    }
+                public void onClick(View v) {
+                    CommonUtil.isLoginAndToLogin(getActivity(), false);
                 }
             });
         } else {
-            tvSignUp.setVisibility(View.GONE);
+            if (CommonUtil.getUserType() == UserType.xueSheng) {
+                mSignInServer.requestCheckIsSignIn(new BaseServer.OnSuccessCallBack() {
+                    @Override
+                    public void onSuccess(int mark) {
+                        switch (mark) {
+                            case 0:
+                                tvSignUp.setVisibility(View.VISIBLE);
+                                tvSignUp.setText("你已报名");
+                                tvSignUp.setEnabled(false);
+                                tvSignUp.setOnClickListener(null);
+                                break;
+                            case -1:
+                                tvSignUp.setVisibility(View.VISIBLE);
+                                tvSignUp.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        SignInActivity.startThisActivity(HomeFragment.this);
+                                    }
+                                });
+                                break;
+                            case -2:
+                                tvSignUp.setVisibility(View.VISIBLE);
+                                tvSignUp.setSelected(true);
+                                tvSignUp.setText("已报名, 等待审核...");
+                                tvSignUp.setOnClickListener(null);
+                                break;
+                        }
+                    }
+                });
+            } else {
+                tvSignUp.setVisibility(View.VISIBLE);
+                tvSignUp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showToast("只有用户类型为大学生才能报名");
+                    }
+                });
+            }
         }
     }
 
     @Override
     public void onSliderClick(BaseSliderView var1) {
-        String msg = var1.getBundle().getString("id");
-        GoodsDetActivity.startThisActivity(getActivity(), msg, null, false);
+//        String msg = var1.getBundle().getString("id");
+//        GoodsDetActivity.startThisActivity(getActivity(), msg, null, false);
     }
 
     @Override
     public void initModelView(int position, final GoodsInfo data, BaseEntityAdapter.ViewHolderBase holderBase, View convertView) {
         Glide.with(getActivity())
                 .load(NetConstants.IMG_HOST + data.getImgurl())
-                .error(R.drawable.test_goods)
+                .error(R.drawable.noproduct)
                 .into(((ViewHolder) holderBase).iv_icon);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

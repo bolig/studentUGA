@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.peoit.android.peoit_lib.adapter.BaseListAdapter;
 import com.peoit.android.peoit_lib.adapter.BaseViewHolder;
 import com.peoit.android.studentuga.R;
 import com.peoit.android.studentuga.config.CommonUtil;
-import com.peoit.android.studentuga.uitl.BitmapUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,8 +69,9 @@ public class ImageAdapter extends BaseListAdapter<String> {
     @Override
     protected void initView(final int position, final String data, ViewHolderBase holderBase, View convertView) {
         if (TextUtils.isEmpty(data)) {
-            ((ViewHolder) holderBase).ivImg.setImageResource(R.drawable.test_shop);
-            ((ViewHolder) holderBase).ivDel.setVisibility(View.INVISIBLE);
+//            ((ViewHolder) holderBase).ivImg.setImageResource(R.drawable.xiangji);
+            Glide.with(mAc).load(R.drawable.xiangji).into(((ViewHolder) holderBase).ivImg);
+            ((ViewHolder) holderBase).ivDel.setVisibility(View.GONE);
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -86,16 +87,20 @@ public class ImageAdapter extends BaseListAdapter<String> {
             if (mEdit) {
                 ((ViewHolder) holderBase).ivDel.setVisibility(View.VISIBLE);
             } else {
-                ((ViewHolder) holderBase).ivDel.setVisibility(View.INVISIBLE);
+                ((ViewHolder) holderBase).ivDel.setVisibility(View.GONE);
             }
-            ((ViewHolder) holderBase).ivImg.setImageBitmap(BitmapUtils.compressBitmap(data));
+            Glide.with(mAc).load(data).error(R.drawable.nomessage).into(((ViewHolder) holderBase).ivImg);
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mAc, PhotoPagerActivity.class);
                     intent.putExtra(PhotoPagerActivity.EXTRA_CURRENT_ITEM, position);
                     ArrayList<String> imgs = new ArrayList<String>();
-                    imgs.addAll(datas);
+                    for (int i = 0; i < datas.size(); i++) {
+                        if (!TextUtils.isEmpty(datas.get(i))) {
+                            imgs.add(datas.get(i));
+                        }
+                    }
                     intent.putExtra(PhotoPagerActivity.EXTRA_PHOTOS, imgs);
                     mAc.startActivityForResult(intent, 2);
                 }

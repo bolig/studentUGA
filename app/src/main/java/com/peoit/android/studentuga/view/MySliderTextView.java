@@ -89,7 +89,7 @@ public class MySliderTextView extends BaseSliderView {
                     loadingBar.setVisibility(View.GONE);
                     return false;
                 }
-            });
+            }).crossFade();
 
             imageRequestManager.into(daimajiaSliderImage);
         } else if (getEmpty() != 0) {

@@ -21,7 +21,7 @@
             android:layout_marginRight="@dimen/layout_m8dp"
             android:layout_marginTop="@dimen/layout_m8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/test_shop" />
+            android:src="@drawable/noproduct" />
 
         <LinearLayout
             android:id="@+id/ll_goodsDisplay"

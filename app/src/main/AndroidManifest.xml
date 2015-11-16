@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.peoit.android.studentuga">
+    package="com.peoit.android.studentuga" >
+
+    <!-- Required -->
+    <permission
+        android:name="com.peoit.android.studentuga.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- Required -->
+    <uses-permission android:name="com.peoit.android.studentuga.permission.JPUSH_MESSAGE" />
 
     <!-- 访问网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -69,15 +77,22 @@
 
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
     <application
         android:name=".ui.base.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".ui.WelActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -94,6 +109,9 @@
             android:name=".ui.RegistorActivity"
             android:label="@string/title_activity_registor" />
         <activity
+            android:name=".ui.ProtocolActivity"
+             />
+        <activity
             android:name=".ui.MyOrderOptionActivity"
             android:label="@string/title_activity_my_order_option" />
         <activity
@@ -107,10 +125,12 @@
             android:label="@string/title_activity_wealth" />
         <activity
             android:name=".ui.PayUpActivity"
-            android:label="@string/title_activity_pay_up">
+            android:label="@string/title_activity_pay_up" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="wx4f6ec46e8e002bc6" />
             </intent-filter>
         </activity>
@@ -125,6 +145,9 @@
             android:label="@string/title_activity_my_msg" />
         <activity
             android:name=".ui.MyTeacherActivity"
+            android:label="@string/title_activity_my_teacher" />
+        <activity
+            android:name=".ui.MyTeacherBindActivity"
             android:label="@string/title_activity_my_teacher" />
         <activity
             android:name=".ui.MyRankingActivity"
@@ -159,20 +182,23 @@
         <activity
             android:name=".ui.PayActivity"
             android:label="@string/title_activity_pay"
-            android:windowSoftInputMode="stateVisible|adjustResize">
-
+            android:windowSoftInputMode="stateVisible|adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="wx4f6ec46e8e002bc6" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.MyGoodsActivity"
             android:label="@string/title_activity_my_goods" />
         <activity
             android:name=".ui.SignInActivity"
+            android:label="@string/title_activity_sign_in" />
+        <activity
+            android:name=".ui.MyGetMoneyListActivity"
             android:label="@string/title_activity_sign_in" />
         <activity
             android:name=".ui.AddCommonActivity"
@@ -194,28 +220,158 @@
         <activity android:name="me.iwf.photopicker.PhotoPagerActivity" />
         <activity
             android:name=".ui.AddDaiXiaoActivity"
-            android:label="@string/title_activity_add_dai_xiao"></activity>
+            android:label="@string/title_activity_add_dai_xiao" />
         <activity
             android:name=".ui.AddExpressActivity"
-            android:label="@string/title_activity_add_express"></activity>
+            android:label="@string/title_activity_add_express" />
         <activity
             android:name=".ui.ExpressActivity"
-            android:label="@string/title_activity_express"></activity>
+            android:label="@string/title_activity_express" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
 
-        <activity android:name=".wxapi.WXPayEntryActivity" />
-
-        <receiver android:name=".weixin.AppRegister">
+        <receiver android:name=".weixin.AppRegister" >
             <intent-filter>
                 <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
             </intent-filter>
         </receiver>
-    </application>
 
-    <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:resizeable="true"
-        android:smallScreens="true" />
+        <activity
+            android:name=".ui.SearchActivity"
+            android:label="@string/title_activity_search" />
+        <activity
+            android:name=".ui.BindTeacherActivity"
+            android:label="@string/title_activity_bind_teacher" />
+        <activity
+            android:name=".ui.MyLookAndSayActivity"
+            android:label="@string/title_activity_my_look_and_say" />
+
+        <!-- 极光推送相关 -->
+
+
+        <!-- Required SDK核心功能 -->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.peoit.android.studentuga" />
+            </intent-filter>
+        </activity>
+
+        <!-- Required  SDK核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Required SDK 核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK 核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+
+                <category android:name="com.peoit.android.studentuga" />
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter android:priority="1000" >
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
+                <category android:name="com.peoit.android.studentuga" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="com.peoit.android.studentuga" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能 -->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <!-- Required SDK 核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver android:name=".ui.receiver.JpushReceiver" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <!-- Optional 用户接受Rich Push Javascript 回调函数的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.peoit.android.studentuga" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 机关推送 -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="a8c4b583edf502b55ec11d02" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="bf96c69175b3f6710707169e" />
+
+        <!-- 极光推送相关 -->
+
+        <activity
+            android:name=".ui.PushActivity"
+            android:label="@string/title_activity_push" >
+        </activity>
+        <activity
+            android:name=".ui.XiaoXiActivity"
+            android:label="@string/title_activity_xiao_xi" >
+        </activity>
+    </application>
 
 </manifest>

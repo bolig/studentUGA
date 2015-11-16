@@ -114,6 +114,40 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="@dimen/layout_1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/md_grey_300"></View>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_main_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="他的动态"
+                android:textColor="@color/col_shop_car_edit"
+                android:textSize="@dimen/text_14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_2dp"
+                android:layout_marginLeft="@dimen/layout_m8dp"
+                android:layout_marginRight="@dimen/layout_m8dp"
+                android:background="@drawable/draw_tab_item_sel"></View>
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <View

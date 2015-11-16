@@ -9,20 +9,18 @@ import android.view.ViewGroup;
 import com.peoit.android.peoit_lib.base.BaseActivity;
 import com.peoit.android.studentuga.R;
 import com.peoit.android.studentuga.config.CommonUtil;
-import com.peoit.android.studentuga.entity.UserInfo;
-import com.peoit.android.studentuga.ui.adapter.MyTeacherAdapter;
+import com.peoit.android.studentuga.net.server.TeacherOrStudentBindServer;
+import com.peoit.android.studentuga.net.server.TeacherOrStudentBindedListServer;
+import com.peoit.android.studentuga.ui.adapter.MyTeacherAdapter1;
 import com.peoit.android.studentuga.uitl.MyLogger;
 import com.peoit.android.studentuga.view.list.SwipyRefreshLayout;
 import com.peoit.android.studentuga.view.list.swipe.SwipeMenu;
 import com.peoit.android.studentuga.view.list.swipe.SwipeMenuLayout;
 import com.peoit.android.studentuga.view.list.swipe.SwipeMenuListView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 我的导师or学生界面
- * <p/>
+ * <p>
  * author:libo
  * time:2015/8/4
  * E-mail:boli_android@163.com
@@ -32,7 +30,8 @@ public class MyTeacherActivity extends BaseActivity {
 
     private SwipyRefreshLayout pullLayout;
     private SwipeMenuListView lvmenuInfo;
-    private MyTeacherAdapter adapter;
+    private MyTeacherAdapter1 adapter;
+    private TeacherOrStudentBindedListServer mBindListServer;
 
     private void assignViews() {
         pullLayout = (SwipyRefreshLayout) findViewById(R.id.pull_layout);
@@ -46,8 +45,6 @@ public class MyTeacherActivity extends BaseActivity {
         }
     }
 
-    private List<UserInfo.UserVosEntity> userInfos = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +53,7 @@ public class MyTeacherActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        userInfos = CommonUtil.currentUser.getUserVos();
+        mBindListServer = new TeacherOrStudentBindedListServer(mAct);
     }
 
     @Override
@@ -67,7 +64,7 @@ public class MyTeacherActivity extends BaseActivity {
 //            public void create(SwipeMenu menu) {
 //                SwipeMenuItem menuItem = new SwipeMenuItem(mAct);
 //                menuItem.setBackground(mAct.getResources().getDrawable(R.drawable.draw_shop_close_sel));
-//                menuItem.setTitle("删除");
+//                menuItem.setTitle("绑定");
 //                menuItem.setWidth(CommonUtil.dip2px(72));
 //                menuItem.setTitleColor(mAct.getResources().getColor(R.color.white_1));
 //                menuItem.setTitleSize(16);
@@ -75,38 +72,38 @@ public class MyTeacherActivity extends BaseActivity {
 //            }
 //        };
 //        lvmenuInfo.setMenuCreator(creator);
-        String error = "";
         String title = "";
+        String tvr = "";
         switch (CommonUtil.getUserType()) {
             case daoShi:
-                error = "暂无学生信息";
                 title = "我的学生";
+                tvr = "绑定学生";
                 break;
             case xueSheng:
-                error = "暂无导师信息";
                 title = "我的导师";
+                tvr = "绑定导师";
                 break;
         }
-        getToolbar().setBack().setTvTitle(title);
-        if (userInfos == null || userInfos.size() == 0) {
-            getUIShowPresenter().showError(R.drawable.user_avater, error);
-        } else {
-            adapter = new MyTeacherAdapter(mAct);
-            adapter.upDateList(userInfos);
-            lvmenuInfo.setAdapter(adapter);
-        }
-
+        getToolbar().setBack().setTvTitle(title).setTvR(tvr, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyTeacherBindActivity.startThisActivity(mAct);
+            }
+        });
+        adapter = mBindListServer.getAdapter();
+        lvmenuInfo.setAdapter(adapter);
+        mBindListServer.requestBindList();
     }
 
     @Override
     public void initListener() {
+        pullLayout.setOnRefreshListener(mBindListServer);
         lvmenuInfo.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public void onMenuItemClick(int position, SwipeMenu menu, int index) {
-
+                new TeacherOrStudentBindServer(mAct).requestBind(adapter.getItem(position).getId() + "");
             }
         });
-
         lvmenuInfo.setOnSwipeListener(new SwipeMenuListView.OnSwipeListener() {
             @Override
             public void onSwipeStart(int position) {
@@ -118,7 +115,6 @@ public class MyTeacherActivity extends BaseActivity {
 
             }
         });
-
         lvmenuInfo.setOnMenuChangeListener(new SwipeMenuLayout.OnMenuStatChangeListener() {
             @Override
             public void onStatChange(boolean isOpen) {
@@ -126,7 +122,6 @@ public class MyTeacherActivity extends BaseActivity {
                 pullLayout.setScroll(!isOpen);
             }
         });
-
         lvmenuInfo.setOnSrcollListener(new SwipeMenuLayout.OnSrcollChangeListener() {
             @Override
             public void onSrcollChange(View root, int currentProgess, int totalProgress) {

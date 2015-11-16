@@ -70,7 +70,7 @@ public class HomeChooseGoodsServer extends BaseServer implements SwipyRefreshLay
         request(Url, GoodsInfo.class, params, new BaseCallBack<GoodsInfo>() {
             @Override
             public void onStart() {
-                uiShow.setIvErrorImg(R.drawable.test_shop);
+                uiShow.setIvErrorImg(R.drawable.noproduct);
                 uiShow.setTvErrorMsg("数据加载失败");
                 uiShow.setTvReloadListener(new View.OnClickListener() {
                     @Override

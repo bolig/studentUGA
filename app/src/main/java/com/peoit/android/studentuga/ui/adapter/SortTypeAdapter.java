@@ -58,7 +58,7 @@ public class SortTypeAdapter extends BaseListAdapter<GoodsTypeInfo> implements B
         mHolder.llItem.setSelected(mOpenPosition == position);
         mHolder.tvTitle.setText(data.getName());
         mHolder.mVosAdapter.upDateList(data.getTypeVos());
-        Glide.with(mAc).load(NetConstants.IMG_HOST + data.getImg()).error(R.drawable.test_shop).into(mHolder.tvIcon);
+        Glide.with(mAc).load(NetConstants.IMG_HOST + data.getImg()).error(R.drawable.noproduct).into(mHolder.tvIcon);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

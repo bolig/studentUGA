@@ -45,7 +45,7 @@ public class OrderGoodsAdapter extends BaseListAdapter<ShopCarInfo> {
         mHolder.tvGoodsStyle.setText("商品样式:" + (TextUtils.isEmpty(data.getSpec()) ? "暂无样式" : data.getSpec()));
         Glide.with(mAc)
                 .load(NetConstants.IMG_HOST + data.getImgurl())
-                .error(R.drawable.test_shop)
+                .error(R.drawable.noproduct)
                 .into(mHolder.ivIcon);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

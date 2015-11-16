@@ -271,7 +271,7 @@ public class GoodsDetActivity extends BaseActivity implements BaseSliderView.OnS
     }
 
     private void loadGoodsDet() {
-        mGoodsServer.loadGoodsDet(mGoodsId, mUid, mUIShow, new GoodsServer.OnGoodsDetCallBack() {
+        mGoodsServer.loadGoodsDet(mGoodsId, mUid, true, mUIShow, new GoodsServer.OnGoodsDetCallBack() {
             @Override
             public void onDetBack(GoodDetInfo info) {
                 if (info != null) {
@@ -387,6 +387,7 @@ public class GoodsDetActivity extends BaseActivity implements BaseSliderView.OnS
                     try {
                         Glide.with(mAct)
                                 .load(NetConstants.IMG_HOST + info.getPic())
+                                .error(R.drawable.user_avater)
                                 .into(ivAvater);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -567,7 +568,7 @@ public class GoodsDetActivity extends BaseActivity implements BaseSliderView.OnS
             MyMsgActivity.startThisActivity(mAct, mGoodsId);
         } else if (v == tvDaiXiao) {
             if (mGoodDetInfo != null) {
-                if (isCancel){
+                if (isCancel) {
                     new DaoXiaoOperationServer(this).requestCancelDaoXiao(mGoodDetInfo.getId() + "");
                 } else {
                     AddDaiXiaoActivity.startThisActivity(mAct, mGoodDetInfo);

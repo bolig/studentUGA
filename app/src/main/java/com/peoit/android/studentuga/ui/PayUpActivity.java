@@ -17,8 +17,8 @@ import com.peoit.android.studentuga.config.CommonUtil;
 import com.peoit.android.studentuga.net.BaseServer;
 import com.peoit.android.studentuga.net.server.PayUpServer;
 import com.peoit.android.studentuga.net.server.WeiXinServer;
-import com.peoit.android.studentuga.uitl.MyLogger;
 import com.peoit.android.studentuga.weixin.WeiXinHelper;
+import com.peoit.android.studentuga.wxapi.WXPayEntryActivity;
 
 public class PayUpActivity extends BaseActivity implements View.OnClickListener {
     private EditText etPayUpMoney;
@@ -108,31 +108,20 @@ public class PayUpActivity extends BaseActivity implements View.OnClickListener 
                         showToast("支付失败");
                         break;
                     case 0:
-                        final WeiXinHelper helper = new WeiXinHelper(mAct, orderNum, "weixin");
+                        int aount = Integer.valueOf(mAmont) * 100;
+                        final WeiXinHelper helper = new WeiXinHelper(mAct, orderNum, "充值创业币", aount + "", "充值创业币￥" + mAmont);
                         helper.setOnSuccessCallBack(new BaseServer.OnSuccessCallBack() {
                             @Override
                             public void onSuccess(int mark) {
+                                hideLoadingDialog();
                                 switch (mark) {
                                     case 1:
                                         helper.genPayReq();
-                                        MyLogger.e("mark = " + mark);
-                                        helper.sendPayReq();
                                         break;
                                 }
                             }
                         });
                         helper.toWeiXin();
-//                        mWeiXinServer.getAccessToken(new BaseServer.OnSuccessCallBack() {
-//                            @Override
-//                            public void onSuccess(int mark) {
-//                                MyLogger.e(" mark = " + mark);
-//                                if (mark == 1){
-//                                    mWeiXinServer.requestPrepayId("充值创业币", mAmont, orderNum);
-//                                }
-//                            }
-//                        });
-//                        WeiXinHelper1 helper1 = new WeiXinHelper1(mAct);
-//                        helper1.sendPay(orderNum);
                         break;
                 }
             }
@@ -143,6 +132,7 @@ public class PayUpActivity extends BaseActivity implements View.OnClickListener 
         new PayUpServer(this).requestPayUp(currentPayMode.mPayType, mAmont, new PayUpServer.OnPayUpCallBack() {
             @Override
             public void onCallBack(int mark, String orderNum) {
+                hideLoadingDialog();
                 switch (mark) {
                     case -1:
                         showToast("支付失败");
@@ -214,6 +204,16 @@ public class PayUpActivity extends BaseActivity implements View.OnClickListener 
             case xsf:
                 llPayUpXsf.setSelected(true);
                 break;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (WXPayEntryActivity.isPay) {
+            WXPayEntryActivity.isPay = false;
+            setResult(RESULT_OK, new Intent());
+            finish();
         }
     }
 

@@ -21,6 +21,8 @@ public class SignInActivity extends BaseActivity {
     private String mName;
     private String mMajor;
     private String mPhone;
+    private EditText etShen;
+    private String mShen;
 
     public static void startThisActivity(Fragment frag) {
         Intent intent = new Intent(frag.getActivity(), SignInActivity.class);
@@ -31,6 +33,7 @@ public class SignInActivity extends BaseActivity {
         etName = (EditText) findViewById(R.id.et_name);
         etMajor = (EditText) findViewById(R.id.et_major);
         etPhoneNum = (EditText) findViewById(R.id.et_phoneNum);
+        etShen = (EditText) findViewById(R.id.et_shen);
 
         tvSignIn = (TextView) findViewById(R.id.tv_signIn);
     }
@@ -58,7 +61,7 @@ public class SignInActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (match()){
-                    mSignServer.requestSignIn(mMajor, mName, mPhone);
+                    mSignServer.requestSignIn(mMajor, mName, mPhone, mShen);
                 }
             }
         });
@@ -68,6 +71,11 @@ public class SignInActivity extends BaseActivity {
         mName = etName.getText().toString();
         if (TextUtils.isEmpty(mName)) {
             showToast("请输入您的姓名");
+            return false;
+        }
+        mShen = etShen.getText().toString();
+        if (TextUtils.isEmpty(mShen)) {
+            showToast("请输入身份证号吗");
             return false;
         }
         mMajor = etMajor.getText().toString();

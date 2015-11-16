@@ -36,6 +36,8 @@ public class AddressInfo implements Serializable {
     private String idcard;
     private String telephone;
 
+
+
     public boolean isNull() {
         return id == -1;
     }

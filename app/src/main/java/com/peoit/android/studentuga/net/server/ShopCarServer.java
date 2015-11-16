@@ -188,7 +188,7 @@ public class ShopCarServer extends BaseServer {
                 mActBase.onResponseFailure(statusCode, msg);
                 if (mUIShow != null) {
                     mUIShow.setReLoad(true);
-                    mUIShow.setIvErrorImg(R.drawable.test_shop);
+                    mUIShow.setIvErrorImg(R.drawable.noproduct);
                     mUIShow.setTvErrorMsg("购物车加载失败");
                     mUIShow.showError();
                 } else {

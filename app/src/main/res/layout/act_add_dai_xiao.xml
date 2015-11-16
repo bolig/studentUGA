@@ -16,7 +16,7 @@
             android:layout_width="@dimen/layout_80dp"
             android:layout_height="@dimen/layout_80dp"
             android:layout_margin="@dimen/layout_m8dp"
-            android:src="@drawable/test_goods" />
+            android:src="@drawable/noproduct" />
 
         <LinearLayout
             android:layout_width="match_parent"

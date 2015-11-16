@@ -29,4 +29,6 @@ public class Constants {
     public static final String SHARE_LOGIN_STAT = "SHARE_LOGIN_STAT";
 
     public static final String SHARE_LOGIN_USER = "SHARE_LOGIN_USER";
+
+    public static final String ACTION_JPUSH = "com.peoit.android.jpush.action";
 }

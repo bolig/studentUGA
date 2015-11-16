@@ -144,6 +144,22 @@ public class CommonInfo implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CommonInfo)) return false;
+
+        CommonInfo info = (CommonInfo) o;
+
+        return id == info.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
+    }
+
+    @Override
     public String toString() {
         return "CommonInfo{" +
                 "id=" + id +
