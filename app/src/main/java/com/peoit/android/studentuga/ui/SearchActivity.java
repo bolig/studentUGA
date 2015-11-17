@@ -129,7 +129,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             }
         });
         lvSchool.setAdapter(mSearchAdapter);
-        lvInfo.setAdapter(mSearchServer.getGoodsListAdapter());
         return mView;
     }
 
@@ -170,10 +169,12 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             if (match()) {
                 switch (lastSearchType) {
                     case goods:
+                        lvInfo.setAdapter(mSearchServer.getGoodsListAdapter());
                         mSearchServer.loadGoodsList(mSearchInfo, "", mUIShow);
                         break;
                     case shanghu:
-                        mSearchServer.loadGoodsList("", mSearchInfo, mUIShow);
+                        lvInfo.setAdapter(mSearchServer.getUserStuListAdapter());
+                        mSearchServer.queryUserStuList(mSearchInfo,mUIShow);
                         break;
                 }
             }

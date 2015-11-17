@@ -6,10 +6,12 @@ import com.loopj.android.http.RequestParams;
 import com.peoit.android.peoit_lib.ActivityBase;
 import com.peoit.android.studentuga.config.NetConstants;
 import com.peoit.android.studentuga.entity.GoodsInfo;
+import com.peoit.android.studentuga.entity.UserStu;
 import com.peoit.android.studentuga.net.BaseCallBack;
 import com.peoit.android.studentuga.net.BaseServer;
 import com.peoit.android.studentuga.ui.adapter.GoodsListAdapter;
 import com.peoit.android.studentuga.ui.adapter.SortTypeAdapter;
+import com.peoit.android.studentuga.ui.adapter.UserStuListAdapter;
 import com.peoit.android.studentuga.ui.showUI.SimpleShowUiShow;
 import com.peoit.android.studentuga.view.list.SwipyRefreshLayout;
 import com.peoit.android.studentuga.view.list.SwipyRefreshLayoutDirection;
@@ -25,15 +27,24 @@ import java.util.List;
 public class SearchGoodsServer extends BaseServer implements SwipyRefreshLayout.OnRefreshListener {
     private SortTypeAdapter mSortTypeAdapter;
     private GoodsListAdapter mGoodsListAdapter;
+    private UserStuListAdapter userStuListAdapter;
     private RequestParams params;
+    private boolean isGoods;
 
     public SearchGoodsServer(ActivityBase activityBase) {
         super(activityBase);
     }
 
     public GoodsListAdapter getGoodsListAdapter() {
+        isGoods=true;
         mGoodsListAdapter = new GoodsListAdapter(mActBase.getActivity());
         return mGoodsListAdapter;
+    }
+
+    public UserStuListAdapter getUserStuListAdapter() {
+        isGoods=false;
+        userStuListAdapter = new UserStuListAdapter(mActBase.getActivity());
+        return userStuListAdapter;
     }
 
     /**
@@ -46,8 +57,7 @@ public class SearchGoodsServer extends BaseServer implements SwipyRefreshLayout.
                               final String queryphone, final SimpleShowUiShow mUIShow) {
         params = getRequestParams();
         params.put("title", title);
-        params.put("queryname", queryphone);
-        params.put("pageNo", "1");
+        params.put("usertype", "2");//学生
         mNo = 1;
         mUIShow.showLoading();
         request(NetConstants.NET_GOODS_LIST, GoodsInfo.class, params, new BaseCallBack<GoodsInfo>() {
@@ -129,5 +139,53 @@ public class SearchGoodsServer extends BaseServer implements SwipyRefreshLayout.
     @Override
     public void onRefresh(SwipyRefreshLayout layout, SwipyRefreshLayoutDirection direction) {
         loadGoodsList(layout, direction);
+    }
+
+    /**
+     * 查询学生信息列表
+     *
+     * @param title
+     */
+    public void queryUserStuList(final String title, final SimpleShowUiShow mUIShow) {
+        params = getRequestParams();
+        params.put("name", title);
+        mNo = 1;
+        mUIShow.showLoading();
+        request(NetConstants.NET_QUERYUSERSTU_LIST, UserStu.class, params, new BaseCallBack<UserStu>() {
+            @Override
+            public void onResponseSuccessList(List<UserStu> result) {
+                if (result == null || result.size() == 0) {
+                    mUIShow.setTvErrorMsg("暂无符合条件的商品");
+                    mUIShow.setTvReloadListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mNo = 1;
+                            queryUserStuList(title,mUIShow);
+                        }
+                    });
+                    mUIShow.setReLoad(true);
+                    mUIShow.showError();
+                    return;
+                }
+                userStuListAdapter.upDateList(result);
+                mUIShow.showData();
+                mNo++;
+            }
+
+            @Override
+            protected void onResponseFailure(int statusCode, String msg) {
+                mActBase.onResponseFailure(statusCode, msg);
+                mUIShow.setTvErrorMsg("数据加载失败");
+                mUIShow.setTvReloadListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mNo = 1;
+                        queryUserStuList(title, mUIShow);
+                    }
+                });
+                mUIShow.setReLoad(true);
+                mUIShow.showError();
+            }
+        });
     }
 }

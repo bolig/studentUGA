@@ -72,6 +72,9 @@ public class NetConstants {
 
     public final static String NET_GOODS_LIST = HOST + "queryProduct.do" + $_ADD_$ + RESPONSE_LIST_MODEL; //获取某个类型的商品
 
+    //public final static String NET_QUERYPRODUCT_LIST = HOST + "queryProduct.do"; //获取商品列表
+    public final static String NET_QUERYUSERSTU_LIST = HOST + "queryUserStu.do"+$_ADD_$ + RESPONSE_LIST_MODEL; //查询学生信息列表
+
     public final static String NET_GOODS_DET = HOST + "queryProductByid.do"; // 获取商品详情
 
     public final static String NET_GOODS_ADDSHOPCAR = HOST + "addShopCar.do"; // 添加商品到购物车
