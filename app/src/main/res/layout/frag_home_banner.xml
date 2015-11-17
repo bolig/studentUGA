@@ -25,6 +25,7 @@
         android:layout_marginBottom="20dp" />
 
     <com.peoit.android.studentuga.view.CustomLinearLayout
+        android:id="@+id/customLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/custom_indicator"
@@ -45,9 +46,9 @@
                 android:id="@+id/ll_ranking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/layout_m16dp"
                 android:layout_marginLeft="@dimen/layout_m8dp"
                 android:layout_marginRight="@dimen/layout_m8dp"
-                android:layout_marginBottom="@dimen/layout_m16dp"
                 android:focusable="false"
                 android:orientation="vertical">
 
@@ -83,4 +84,10 @@
 
     </com.peoit.android.studentuga.view.CustomLinearLayout>
 
+
+    <FrameLayout android:visibility="gone"
+        android:id="@+id/fl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/customLinearLayout"></FrameLayout>
 </RelativeLayout>

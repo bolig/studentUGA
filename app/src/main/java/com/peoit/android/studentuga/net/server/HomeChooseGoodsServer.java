@@ -26,12 +26,14 @@ import java.util.List;
 public class HomeChooseGoodsServer extends BaseServer implements SwipyRefreshLayout.OnRefreshListener {
     private final String Url = NetConstants.HOST + "queryProductTop.do" + NetConstants.$_ADD_$ + NetConstants.RESPONSE_LIST_MODEL;
     private BaseViewModelAdapter<GoodsInfo> adapter;
+    private HomeFragment fragment;
 
     public HomeChooseGoodsServer(ActivityBase activityBase) {
         super(activityBase);
     }
 
     public BaseViewModelAdapter<GoodsInfo> getAdapter(HomeFragment fragment) {
+        this.fragment=fragment;
         adapter = new BaseViewModelAdapter<GoodsInfo>(mActBase.getActivity(), fragment);
         return adapter;
     }
@@ -84,7 +86,9 @@ public class HomeChooseGoodsServer extends BaseServer implements SwipyRefreshLay
 
             @Override
             public void onResponseSuccessList(List<GoodsInfo> result) {
+                uiShow.mRootView.setVisibility(View.GONE);
                 if (result == null || result.size() == 0) {
+                    uiShow.mRootView.setVisibility(View.VISIBLE);
                     uiShow.showError();
                     return;
                 }
@@ -95,9 +99,12 @@ public class HomeChooseGoodsServer extends BaseServer implements SwipyRefreshLay
 
             @Override
             protected void onResponseFailure(int statusCode, String msg) {
+                uiShow.mRootView.setVisibility(View.GONE);
                 mActBase.onResponseFailure(statusCode, msg);
                 uiShow.showError();
+                adapter.removeAllData();
             }
+
         });
     }
 
@@ -123,7 +130,7 @@ public class HomeChooseGoodsServer extends BaseServer implements SwipyRefreshLay
                         break;
                     case BOTTOM:
                         adapter.addFootDataList(result);
-                        mNo ++;
+                        mNo++;
                         break;
                 }
             }
@@ -134,6 +141,10 @@ public class HomeChooseGoodsServer extends BaseServer implements SwipyRefreshLay
                 mActBase.showToast("数据加载失败");
             }
         });
+
+        if(direction == SwipyRefreshLayoutDirection.TOP){
+            fragment.requestServer();
+        }
     }
 
     @Override

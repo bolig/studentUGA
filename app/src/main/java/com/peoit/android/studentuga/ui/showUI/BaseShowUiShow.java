@@ -19,7 +19,7 @@ public class BaseShowUiShow implements ShowUIShowBase {
     private final Context mContext;
     private final boolean isPreload;
 
-    private ViewGroup mRootView;
+    public ViewGroup mRootView;
 
     public BaseShowUiShow(Context context) {
         this(context, null, false);

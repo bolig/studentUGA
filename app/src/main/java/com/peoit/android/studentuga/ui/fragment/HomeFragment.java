@@ -75,6 +75,7 @@ public class HomeFragment extends BasePagerFragment implements BaseSliderView.On
     private TextView tvNoRanking;
     private HomeBannerServer mHomeBannerServer;
     private SignInServer mSignInServer;
+    private SimpleShowUiShow uiShow;
 
     @Override
     public View createView(LayoutInflater inflater, Bundle savedInstanceState) {
@@ -96,7 +97,6 @@ public class HomeFragment extends BasePagerFragment implements BaseSliderView.On
 
         lvInfo = (ListView) findViewById(R.id.lv_info);
 
-        flRoot = (FrameLayout) findViewById(R.id.fl_root);
 
         action_title = findViewById(com.peoit.android.peoit_lib.R.id.title_bar);
         actionBar = (CustomActionBar) findViewById(com.peoit.android.peoit_lib.R.id.actionbar);
@@ -126,6 +126,7 @@ public class HomeFragment extends BasePagerFragment implements BaseSliderView.On
     private void addHeader() {
         mHeaderView = LayoutInflater.from(getActivity()).inflate(R.layout.frag_home_banner, null);
 
+        flRoot = (FrameLayout) mHeaderView.findViewById(R.id.fl_root);
         mSlider = (SliderLayout) mHeaderView.findViewById(R.id.slider);
         mIndicator = (PagerIndicator) mHeaderView.findViewById(R.id.custom_indicator);
         tvNoRanking = (TextView) mHeaderView.findViewById(R.id.tv_noRanking);
@@ -147,12 +148,28 @@ public class HomeFragment extends BasePagerFragment implements BaseSliderView.On
 
         lvInfo.addHeaderView(mHeaderView);
 
-        SimpleShowUiShow uiShow = new SimpleShowUiShow(getActivity());
-        uiShow.setRootView(flRoot);
-
         mGoodsAdapter = mHomeGoodsChooseServer.getAdapter(this);
         lvInfo.setAdapter(mGoodsAdapter);
+        uiShow = new SimpleShowUiShow(getActivity());
+        uiShow.setRootView(flRoot);
         mHomeGoodsChooseServer.RequestHoneChooseGoodsList(uiShow);
+        mHomeRankingServer.requestHomeRanking(new HomeRankingServer.OnRankingCallBack() {
+            @Override
+            public void onCallBack(List<UserInfo> infos) {
+                addViewToRanking(infos);
+            }
+        });
+        mHomeBannerServer.requestHomebanner(new HomeBannerServer.OnBannerCallBack() {
+            @Override
+            public void onCallBack(List<BannerInfo> infos) {
+                updataView(infos);
+            }
+        });
+    }
+
+    public void requestServer() {
+
+        //mHomeGoodsChooseServer.RequestHoneChooseGoodsList(uiShow);
         mHomeRankingServer.requestHomeRanking(new HomeRankingServer.OnRankingCallBack() {
             @Override
             public void onCallBack(List<UserInfo> infos) {
