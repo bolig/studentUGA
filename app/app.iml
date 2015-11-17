@@ -97,8 +97,8 @@
     <orderEntry type="library" exported="" name="glide-3.6.1" level="project" />
     <orderEntry type="library" exported="" name="httpclient-4.3.6" level="project" />
     <orderEntry type="library" exported="" name="jpush-sdk-release1.8.0" level="project" />
-    <orderEntry type="library" exported="" name="alipaysecsdk" level="project" />
     <orderEntry type="library" exported="" name="alipaySDK-20150602" level="project" />
+    <orderEntry type="library" exported="" name="alipaysecsdk" level="project" />
     <orderEntry type="library" exported="" name="PhotoPicker-0.2.8" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.9" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
