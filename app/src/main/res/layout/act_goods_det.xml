@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:singleLine="true"
-                        android:text="(免运费)"
+                        android:text="(联系商家)"
                         android:textColor="@color/md_red_300"
                         android:textSize="@dimen/text_12sp" />
 

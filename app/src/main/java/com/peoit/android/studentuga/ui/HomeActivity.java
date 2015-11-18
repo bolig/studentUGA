@@ -18,6 +18,8 @@ import com.peoit.android.studentuga.ui.fragment.HomeFragment;
 import com.peoit.android.studentuga.ui.fragment.HomeShopCarFragment;
 import com.peoit.android.studentuga.ui.fragment.HomeSortFragment1;
 import com.peoit.android.studentuga.ui.fragment.HomeUserFragment2;
+import com.peoit.android.studentuga.uitl.MyLogger;
+import com.umeng.update.UmengUpdateAgent;
 
 import java.util.ArrayList;
 
@@ -67,6 +69,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setAddLayoutBase(false);
         setBaseContentView(R.layout.act_home);
+        MyLogger.i("onCreate");
+
+        UmengUpdateAgent.setUpdateOnlyWifi(false);
+        UmengUpdateAgent.update(this);
     }
 
     @Override

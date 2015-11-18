@@ -32,4 +32,5 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile files('libs/libammsdk.jar')
     compile files('libs/jpush-sdk-release1.8.0.jar')
+    compile project(':umengupdate')
 }
