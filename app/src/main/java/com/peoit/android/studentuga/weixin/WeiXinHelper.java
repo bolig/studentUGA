@@ -230,7 +230,7 @@ public class WeiXinHelper {
             packageParams.add(new BasicNameValuePair("body", mOrderTitle));
             packageParams.add(new BasicNameValuePair("mch_id", Constants.MCH_ID));
             packageParams.add(new BasicNameValuePair("nonce_str", nonceStr));
-            packageParams.add(new BasicNameValuePair("notify_url", "http://120.24.165.95:8081/cyshop/api/wxverify.do"));
+            packageParams.add(new BasicNameValuePair("notify_url", "http://123.57.240.52:8080/cyshop/api/wxverify.do"));
             MyLogger.e("trade_no = " + mOrderNum);
             packageParams.add(new BasicNameValuePair("out_trade_no", mOrderNum));
 //            packageParams.add(new BasicNameValuePair("out_trade_no", genOutTradNo(mOrderNum)));

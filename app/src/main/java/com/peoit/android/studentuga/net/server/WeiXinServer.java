@@ -205,7 +205,7 @@ public class WeiXinServer extends BaseServer {
         packageParams.add(new BasicNameValuePair("body", body));
         packageParams.add(new BasicNameValuePair("mch_id", Constants.MCH_ID));
         packageParams.add(new BasicNameValuePair("nonce_str", genNonceStr()));
-        packageParams.add(new BasicNameValuePair("notify_url", "http://120.24.165.95:8081/cyshop/api/wxverify.do"));
+        packageParams.add(new BasicNameValuePair("notify_url", "http://123.57.240.52:8080/cyshop/api/wxverify.do"));
         packageParams.add(new BasicNameValuePair("out_trade_no", genTradeNo(tradeNo)));
         packageParams.add(new BasicNameValuePair("spbill_create_ip", "192.168.1.1"));
         packageParams.add(new BasicNameValuePair("total_fee", money));
